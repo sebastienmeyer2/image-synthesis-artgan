@@ -1,0 +1,1828 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>src.gan.artgan API documentation</title>
+<meta name="description" content="Gather the Generator and the Discriminator into the ArtGAN …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.gan.artgan</code></h1>
+</header>
+<section id="section-intro">
+<p>Gather the Generator and the Discriminator into the ArtGAN.</p>
+<p>The purpose of this file is to combine the Generator and
+the Discriminator part from their own files to build up
+the ArtGAN. To do so, we just have to initialize every
+parameter of the sub-networks. Then, we add methods to
+ArtGAN that can train itself with specified
+parameters, show or generate images and save loss values.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Gather the Generator and the Discriminator into the ArtGAN.
+
+The purpose of this file is to combine the Generator and
+the Discriminator part from their own files to build up
+the ArtGAN. To do so, we just have to initialize every
+parameter of the sub-networks. Then, we add methods to
+ArtGAN that can train itself with specified
+parameters, show or generate images and save loss values.
+&#34;&#34;&#34;
+
+
+# Importing Python packages
+import os
+import sys 
+path = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(path)
+parentdir = os.path.dirname(path)
+sys.path.insert(0, parentdir)
+from typing import List
+from tqdm import tqdm
+import torch
+import torch.nn as nn
+import torchvision.transforms as transforms
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Importing our own files and classes
+from generator import Generator
+from discriminator import Discriminator
+import utils
+
+
+class ArtGAN():
+    &#34;&#34;&#34;Implement the ArtGAN.&#34;&#34;&#34;
+
+    def __init__(self, data_type: str, version: str,
+                 img_size: int, nb_classes: int, input_channels: int = 3,
+                 start_channels: int = 110, alpha: float = 0.2,
+                 retrain_epoch: int = None, device: torch.device = None):
+        &#34;&#34;&#34;Initialize the ArtGAN as described in the original paper.
+
+        Args:
+            data_type: the type of input data
+            version: the version of this GAN
+            img_size: the size of the input images, which
+                are expected to be squared images of size
+                img_size*img_size*input_channels where input_channels is
+                used to initialize the Discriminator
+            nb_classes: the number of classes for the input
+                images classification, except the FAKE class, e.g. 10
+                for CIFAR-10 dataset
+            input_channels: the number of channels on the input
+                images, e.g. 3 for RGB channels
+            start_channels: the number of channels to
+                build the Generator with, that is, the number of
+                channels that are used for the dense data
+            alpha: positive coefficient for the leakyReLU
+                negative slope e.g. 0.2 as in the original paper
+            retrain_epoch: if positive, the model will be loaded from
+                the results folder
+            device: the device to use everywhere, used in case of
+                change for retraining
+
+        Raises:
+            ValueError if the size of the input images is less than 64 pixels
+            due to the operations exectued by the generator deconv layers
+        &#34;&#34;&#34;
+        # General parameters
+
+        self.data_type = data_type
+        self.version = version
+
+        self.total_epochs = 0
+        self.retrain = False
+
+        if img_size &lt; 64:
+            raise ValueError(&#34;The size of the input images has to be of at least 64 pixels!&#34;)
+
+        self.img_size = img_size
+        self.nb_classes = nb_classes
+        self.input_channels = input_channels
+        self.start_channels = start_channels
+        self.alpha = alpha
+
+        # Modules
+
+        self.D = Discriminator(img_size, nb_classes, input_channels, alpha)
+        self.G = Generator(img_size, start_channels)
+
+        # In case of retraining
+
+        if retrain_epoch is not None:
+
+            models_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/models/&#34;
+            path_to_model = models_folder + &#34;gan_&#34; + str(retrain_epoch) + &#34;.pth&#34;
+            model_data = torch.load(path_to_model, map_location=device)
+
+            # Tests for other parameters
+            if self.img_size != model_data[&#34;img_size&#34;]:
+                raise ValueError(&#34;Not same image size! Saved {}.&#34;.format(model_data[&#34;img_size&#34;]))
+            if self.nb_classes != model_data[&#34;nb_classes&#34;]:
+                raise ValueError(&#34;Not same number of classes! Saved {}.&#34;.format(model_data[&#34;nb_classes&#34;]))
+            if self.input_channels != model_data[&#34;input_channels&#34;]:
+                raise ValueError(&#34;Not same number of channels for images! Saved {}.&#34;.format(model_data[&#34;input_channels&#34;]))
+            if self.start_channels != model_data[&#34;start_channels&#34;]:
+                raise ValueError(&#34;Not same number of start channels! Saved {}.&#34;.format(model_data[&#34;start_channels&#34;]))
+            if self.alpha != model_data[&#34;alpha&#34;]:
+                raise ValueError(&#34;Not same negative slope for LeakyReLU! Saved {}.&#34;.format(model_data[&#34;alpha&#34;]))
+
+            self.total_epochs = model_data[&#34;epoch&#34;]
+            self.G.load_state_dict(model_data[&#34;G&#34;])
+            self.D.load_state_dict(model_data[&#34;D&#34;])
+
+            self.retrain = True
+
+    def cuda(self) -&gt; None:
+        &#34;&#34;&#34;Enable CUDA on this class, since it is not a Module.&#34;&#34;&#34;
+        self.G.cuda()
+        self.D.cuda()
+
+        return
+
+    def train(self) -&gt; None:
+        &#34;&#34;&#34;Go into training mode.&#34;&#34;&#34;
+        self.G.train()
+        self.D.train()
+
+        return
+
+    def eval(self) -&gt; None:
+        &#34;&#34;&#34;Go into evaluation mode.&#34;&#34;&#34;
+        self.G.eval()
+        self.D.eval()
+
+        return
+
+    def encode(self, img: torch.FloatTensor) -&gt; torch.FloatTensor:
+        &#34;&#34;&#34;Encode an input image into features.
+
+        Args:
+            img: a torch tensor containing images of
+                dimension (N, C, H, W) where C = nb_classes, H = img_size &amp; W = img_size
+                from initialization
+
+        Returns:
+            self.D.encode(img): the result of encoding
+        &#34;&#34;&#34;
+        return self.D.encode(img)
+
+    def decode(self, latent: torch.FloatTensor) -&gt; torch.FloatTensor:
+        &#34;&#34;&#34;Decode a vector of latent features.
+
+        Args:
+            latent: a torch tensor of dimension (N, C, H, W)
+                where C = 512 from latent features
+
+        Returns:
+            self.G.decode(latent): resulting image via decoding
+        &#34;&#34;&#34;
+        return self.G.decode(latent)
+
+    def train_model(self, trainloader: torch.utils.data.DataLoader, device: torch.device,
+                    epochs: int = 5, initial_lr: float = 1e-3, lr_ratio: float = 1.0, opt_decay: float = 0.9,
+                    G_decrease_epoch: int = 80, G_decrease_rate: float = 10,
+                    D_decrease_epoch: int = 80, D_decrease_rate: float = 10,
+                    save_model_step: int = 1, save_image_step: int = 5, data_classes: List = None,
+                    save_loss: bool = False, save_score: bool = False) -&gt; pd.DataFrame:
+        &#34;&#34;&#34;Train the GAN using the algorithm provided in the original paper.
+
+        Args:
+            trainloader: the input data for training
+            device: device to be used everywhere
+            epochs: the number of epochs to train the model
+            initial_lr: the learning rate to begin training with
+            lr_ratio: the ratio between the initial learning rate of the
+                discriminator and the initial learning rate of the
+                generator
+            opt_decay: the rate to use in the RMSProp optimizers
+            G_decrease_epoch: the epoch when we want to decrease the
+                learning rate of the generator
+            G_decrease_rate: the decrease rate to use for each
+                decrease epoch step for the generator
+            D_decrease_epoch: the epoch when we want to decrease the
+                learning rate of the discriminator
+            D_decrease_rate: the decrease rate to use for each
+                decrease epoch step for the discriminator
+            save_model_step: after each save model step, the model will
+                be saved in an appropriate folder
+            save_image_step: after each save image step, the model will go
+                in eval mode to generate an image per class and save them
+                in an appropriate folder
+            data_classes: the list of all classes in the input data
+            save_loss: whether we have to save this new loss
+                into the results folder
+            save_score: whether we want to save the score for each epoch
+                into the results folder
+
+        Returns:
+            loss_list: a DataFrame containing the mean loss for the Discriminator
+                and the Generator after each epoch
+        &#34;&#34;&#34;
+        self.train()
+
+        # Initializing optimizers
+        G_opt = torch.optim.RMSprop(self.G.parameters(), lr=initial_lr, alpha=opt_decay)
+        D_opt = torch.optim.RMSprop(self.D.parameters(), lr=lr_ratio*initial_lr, alpha=opt_decay)
+
+        if self.retrain:
+
+            models_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/models/&#34;
+            path_to_model = models_folder + &#34;gan_&#34; + str(self.total_epochs) + &#34;.pth&#34;
+            model_data = torch.load(path_to_model, map_location=device)
+
+            G_opt.load_state_dict(model_data[&#34;G_opt&#34;])
+            D_opt.load_state_dict(model_data[&#34;D_opt&#34;])
+
+        # Update both learning rates
+        new_G_lr = utils.decrease_lr(G_opt, self.total_epochs, G_decrease_epoch, G_decrease_rate)
+        if new_G_lr != None:
+            print(&#34;Learning rate of G has been set to {}.&#34;.format(new_G_lr))
+            G_lr = new_G_lr
+
+        new_D_lr = utils.decrease_lr(D_opt, self.total_epochs, D_decrease_epoch, D_decrease_rate)
+        if new_D_lr != None:
+            print(&#34;Learning rate of D has been set to {}.&#34;.format(new_D_lr))
+            D_lr = new_D_lr
+
+        # Initializing loss lists
+        loss_list = []
+        D_loss_value = 0
+        D_loss_list = []
+        D_loss_per_epoch = 0
+        G_loss_value = 0
+        G_loss_list = []
+        G_loss_per_epoch = 0
+
+        # Initializing loss functions
+        prob_loss = torch.nn.BCELoss()
+        mse_loss = torch.nn.MSELoss()
+
+        # Initialiazing accuracy score
+        batch_size = 0
+        score = 0
+        score_list = []
+
+        G_lr = np.around(G_opt.param_groups[0][&#34;lr&#34;], 4)
+        D_lr = np.around(D_opt.param_groups[0][&#34;lr&#34;], 4)
+
+        epoch_pbar = tqdm(range(epochs), desc=&#34;Epoch: {}, lr: {} (G) {} (D), TN: {}%&#34;.format(self.total_epochs, G_lr, D_lr, score))
+        for _ in epoch_pbar:
+
+            batch_pbar = tqdm(trainloader, desc=&#34;Batch loss: {} (G) {} (D)&#34;.format(np.around(G_loss_value, 3), np.around(D_loss_value, 3)))
+            for X_r, k in batch_pbar:
+
+                # Setting discriminator&#39;s grad to zero
+                D_opt.zero_grad()
+
+                # Input images &amp; labels
+                X_r = X_r.to(device)
+                k = k.to(device)
+                batch_size = X_r.size(0)
+
+                # Noise can help both networks to learn more
+                X_noise = utils.gen_noise(batch_size, self.input_channels, self.img_size, self.total_epochs, device)
+                X_r += X_noise
+
+                # Initialization of samples for the generator
+                Z_hat, Yk_hat = utils.fake_noise(batch_size, self.start_channels, self.nb_classes, device)
+                k_hat = utils.fake_class(batch_size, self.nb_classes, device)
+                Z_Yk_cat = torch.cat([Z_hat, Yk_hat], dim=1)
+
+                # Making a one-hot vector from input labels
+                k_hot = utils.class_to_prob(k, self.nb_classes, device)
+
+                # Making a one-hot vector from FAKE class
+                k_hat_hot = utils.class_to_prob(k_hat, self.nb_classes, device)
+
+                # Construction of generated image and prediction for both real and fake ones
+                Y = self.D(X_r)
+                X_hat = self.G(Z_Yk_cat)
+                Y_hat = self.D(X_hat)
+
+                # Computing accuracy of the discriminator
+                disc_class = torch.argmax(Y_hat, dim=1)
+                for j in range(batch_size):
+                    if disc_class[j] == self.nb_classes:
+                        score += 1
+
+                # Backpropagation for discriminator&#39;s parameters
+                D_real_loss = prob_loss(Y, k_hot)
+                D_fake_loss = prob_loss(Y_hat, k_hat_hot)
+                D_loss = D_real_loss + D_fake_loss
+                D_loss_value = D_loss.item()
+                D_loss_list.append(D_loss_value)
+                D_loss.backward(retain_graph=True)
+
+                D_opt.step()
+
+                # Setting generator&#39;s grad to zero
+                G_opt.zero_grad()
+
+                # Recalculation of prediction (modified parameters) and adv loss
+                new_Y_hat = self.D(X_hat)
+                k_fake_hot = torch.cat([Yk_hat, torch.zeros(batch_size, 1, device=device)], dim=1)
+                G_loss_adv = prob_loss(new_Y_hat, k_fake_hot)
+
+                # New encoding and decoding of image and L2 loss
+                Z = self.encode(X_r)
+                Xz_hat = self.decode(Z)
+                G_loss_L2 = mse_loss(X_r, Xz_hat)
+
+                # Backpropagation for generator&#39;s parameters
+                G_loss = G_loss_adv + G_loss_L2
+                G_loss.backward()
+                G_loss_value = G_loss.item()
+                G_loss_list.append(G_loss_value)
+
+                G_opt.step()
+
+                batch_pbar.set_description(&#34;Batch loss: {} (G) {} (D)&#34;.format(np.around(G_loss_value, 3), np.around(D_loss_value, 3)))
+
+            # Updating net&#39;s own epoch counter
+            self.total_epochs += 1
+
+            # Updating both learning rates
+            new_G_lr = utils.decrease_lr(G_opt, self.total_epochs, G_decrease_epoch, G_decrease_rate)
+            if new_G_lr != None:
+                print(&#34;Learning rate of G has been set to {}.&#34;.format(new_G_lr))
+                G_lr = np.around(new_G_lr, 4)
+
+            new_D_lr = utils.decrease_lr(D_opt, self.total_epochs, D_decrease_epoch, D_decrease_rate)
+            if new_D_lr != None:
+                print(&#34;Learning rate of D has been set to {}.&#34;.format(new_D_lr))
+                D_lr = np.around(new_D_lr, 4)
+
+            # Updating progression bar
+            score = np.around(100*score/len(trainloader.dataset), 2)
+            score_list.append([self.total_epochs, score])
+            epoch_pbar.set_description(&#34;Epochs done: {}, lr: {} (G) {} (D), TN: {}%&#34;.format(self.total_epochs, G_lr, D_lr, score))
+            score = 0
+
+            # Saving loss of both networks
+            D_loss_per_epoch = np.mean(D_loss_list)
+            D_loss_list = []
+            G_loss_per_epoch = np.mean(G_loss_list)
+            G_loss_list = []
+            loss_list.append([self.total_epochs, D_loss_per_epoch, G_loss_per_epoch])
+
+            # Saving model
+            if save_model_step &gt; 0:
+                if self.total_epochs%save_model_step == 0:
+
+                    models_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/models/&#34;
+                    model_filename = models_folder + &#34;gan_&#34; + str(self.total_epochs) + &#34;.pth&#34;
+
+                    if not os.path.exists(models_folder):
+                        os.makedirs(models_folder)
+
+                    model_data = {}
+                    model_data[&#34;epoch&#34;] = self.total_epochs
+                    model_data[&#34;G&#34;] = self.G.state_dict()
+                    model_data[&#34;D&#34;] = self.D.state_dict()
+                    model_data[&#34;G_opt&#34;] = G_opt.state_dict()
+                    model_data[&#34;D_opt&#34;] = D_opt.state_dict()
+                    model_data[&#34;start_channels&#34;] = self.start_channels
+                    model_data[&#34;img_size&#34;] = self.img_size
+                    model_data[&#34;input_channels&#34;] = self.input_channels
+                    model_data[&#34;nb_classes&#34;] = self.nb_classes
+                    model_data[&#34;alpha&#34;] = self.alpha
+
+                    torch.save(model_data, model_filename)
+
+            # Saving generated images
+            if save_image_step &gt; 0:
+                if self.total_epochs%save_image_step == 0:
+
+                    self.save_img(data_classes, device)
+
+        loss_list = pd.DataFrame(loss_list, columns=[&#34;Epoch&#34;, &#34;D_loss&#34;, &#34;G_loss&#34;])
+
+        # Saving loss
+        if save_loss:
+            self.write_loss(loss_list)
+
+        score_list = pd.DataFrame(score_list, columns=[&#34;Epoch&#34;, &#34;Score&#34;])
+
+        # Saving accuracy of the discriminator
+        if save_score:
+            self.write_score(score_list)
+
+        self.eval()
+
+        return loss_list
+
+    def show_img(self, data_classes: List, device: torch.device) -&gt; None:
+        &#34;&#34;&#34;Show a collection of images for all classes.
+
+        Args:
+            data_classes: the classes contained in the input data
+            device: the device to use everywhere
+        &#34;&#34;&#34;
+        self.eval()
+
+        Z_hat, Yk_hat = utils.fake_noise_all_classes(self.start_channels, self.nb_classes, device)
+        Z_Yk_fixed = torch.cat([Z_hat, Yk_hat], dim=1)
+
+        gen_imgs = self.G(Z_Yk_fixed)
+        class_probs = self.D(gen_imgs)
+        _, predicted_classes = torch.max(class_probs.data, 1)
+
+        for i in range(self.nb_classes):
+            gen_img = gen_imgs[i]
+            pred = predicted_classes[i]
+
+            gen_img = gen_img.cpu().detach().numpy()
+
+            plt.imshow(np.transpose(gen_img, (1, 2, 0)))
+            plt.axis(&#34;off&#34;)
+            plt.title(&#34;Label: {} (G) {} (D)&#34;.format(data_classes[i], data_classes[pred]))
+
+            plt.show()
+
+        self.train()
+
+        return
+
+    def save_img(self, data_classes: List, device: torch.device) -&gt; None:
+        &#34;&#34;&#34;Plot and save a collection of images for all classes.
+
+        Args:
+            data_classes: the classes contained in the input data
+            device: the device to use everywhere
+        &#34;&#34;&#34;
+        self.eval()
+
+        Z_hat, Yk_hat = utils.fake_noise_all_classes(self.start_channels, self.nb_classes, device)
+        Z_Yk_fixed = torch.cat([Z_hat, Yk_hat], dim=1)
+
+        gen_imgs = self.G(Z_Yk_fixed)
+        class_probs = self.D(gen_imgs)
+        _, predicted_classes = torch.max(class_probs.data, 1)
+
+        images_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/images/epoch_&#34; + str(self.total_epochs) + &#34;/&#34;
+        if not os.path.exists(images_folder):
+            os.makedirs(images_folder)
+
+        for i in range(self.nb_classes):
+            gen_img = gen_imgs[i]
+            pred = predicted_classes[i]
+
+            gen_img = gen_img.cpu().detach().numpy()
+
+            plt.imshow(np.transpose(gen_img, (1, 2, 0)))
+            plt.axis(&#34;off&#34;)
+            plt.title(&#34;Label: {} (G) {} (D)&#34;.format(data_classes[i], data_classes[pred]))
+
+            path_to_image = images_folder + &#34;G_&#34; + data_classes[i] + &#34;_D_&#34; + data_classes[pred] + &#34;.jpg&#34;
+            plt.savefig(path_to_image)
+
+        self.train()
+
+        return
+
+    def save_raw_img(self, data_classes: List, device: torch.device) -&gt; None:
+        &#34;&#34;&#34;Save a collection of images for all classes as PIL images.
+
+        Args:
+            data_classes: the classes contained in the input data
+            device: the device to use everywhere
+        &#34;&#34;&#34;
+        pil_transform = transforms.ToPILImage()
+
+        self.eval()
+
+        Z_hat, Yk_hat = utils.fake_noise_all_classes(self.start_channels, self.nb_classes, device)
+        Z_Yk_fixed = torch.cat([Z_hat, Yk_hat], dim=1)
+
+        gen_imgs = self.G(Z_Yk_fixed)
+
+        images_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/raw_images/&#34;
+        if not os.path.exists(images_folder):
+            os.makedirs(images_folder)
+
+        for i in range(self.nb_classes):
+            gen_img = gen_imgs[i]
+
+            gen_img = pil_transform(gen_img)
+
+            path_to_image = images_folder + data_classes[i] + &#34;_&#34; + str(self.total_epochs) + &#34;.jpg&#34;
+            gen_img.save(path_to_image)
+
+        self.train()
+
+        return
+
+    def write_loss(self: nn.Module, loss_list: pd.DataFrame) -&gt; None:
+        &#34;&#34;&#34;Write the content of loss_list into a csv file for future reading.
+
+        It will append the data if the model is being retrained.
+
+        Args:
+            loss_list: a dataframe containing the total epochs counter, the
+                loss for Generator and the loss for Discriminator
+        &#34;&#34;&#34;
+        losses_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/losses/&#34;
+        if not os.path.exists(losses_folder):
+            os.makedirs(losses_folder)
+        path_to_loss = losses_folder + &#34;loss.csv&#34;
+
+        if self.retrain == False:
+            loss_list.to_csv(path_to_loss, columns=loss_list.columns, header=True, index=False)
+        else:
+            loss_data = pd.read_csv(path_to_loss, header=0)
+            loss_list = pd.concat([loss_data, loss_list], ignore_index=True)
+            loss_list.to_csv(path_to_loss, columns=loss_list.columns, header=True, index=False)
+
+        return
+
+    def write_score(self: nn.Module, score_list: pd.DataFrame) -&gt; None:
+        &#34;&#34;&#34;Write the content of score_list into a csv file for future reading.
+
+        It will append the data if the model is being retrained.
+
+        Args:
+            score_list: a dataframe containing the total epochs counter, and the
+                score for Discriminator
+        &#34;&#34;&#34;
+        scores_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/scores/&#34;
+        if not os.path.exists(scores_folder):
+            os.makedirs(scores_folder)
+        path_to_score = scores_folder + &#34;score.csv&#34;
+
+        if self.retrain == False:
+            score_list.to_csv(path_to_score, columns=score_list.columns, header=True, index=False)
+        else:
+            score_data = pd.read_csv(path_to_score, header=0)
+            score_list = pd.concat([score_data, score_list], ignore_index=True)
+            score_list.to_csv(path_to_score, columns=score_list.columns, header=True, index=False)
+
+        return
+        </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.gan.artgan.ArtGAN"><code class="flex name class">
+<span>class <span class="ident">ArtGAN</span></span>
+<span>(</span><span>data_type: str, version: str, img_size: int, nb_classes: int, input_channels: int = 3, start_channels: int = 110, alpha: float = 0.2, retrain_epoch: int = None, device: torch.device = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Implement the ArtGAN.</p>
+<p>Initialize the ArtGAN as described in the original paper.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data_type</code></strong></dt>
+<dd>the type of input data</dd>
+<dt><strong><code>version</code></strong></dt>
+<dd>the version of this GAN</dd>
+<dt><strong><code>img_size</code></strong></dt>
+<dd>the size of the input images, which
+are expected to be squared images of size
+img_size<em>img_size</em>input_channels where input_channels is
+used to initialize the Discriminator</dd>
+<dt><strong><code>nb_classes</code></strong></dt>
+<dd>the number of classes for the input
+images classification, except the FAKE class, e.g. 10
+for CIFAR-10 dataset</dd>
+<dt><strong><code>input_channels</code></strong></dt>
+<dd>the number of channels on the input
+images, e.g. 3 for RGB channels</dd>
+<dt><strong><code>start_channels</code></strong></dt>
+<dd>the number of channels to
+build the Generator with, that is, the number of
+channels that are used for the dense data</dd>
+<dt><strong><code>alpha</code></strong></dt>
+<dd>positive coefficient for the leakyReLU
+negative slope e.g. 0.2 as in the original paper</dd>
+<dt><strong><code>retrain_epoch</code></strong></dt>
+<dd>if positive, the model will be loaded from
+the results folder</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to use everywhere, used in case of
+change for retraining</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<p>ValueError if the size of the input images is less than 64 pixels
+due to the operations exectued by the generator deconv layers</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ArtGAN():
+    &#34;&#34;&#34;Implement the ArtGAN.&#34;&#34;&#34;
+
+    def __init__(self, data_type: str, version: str,
+                 img_size: int, nb_classes: int, input_channels: int = 3,
+                 start_channels: int = 110, alpha: float = 0.2,
+                 retrain_epoch: int = None, device: torch.device = None):
+        &#34;&#34;&#34;Initialize the ArtGAN as described in the original paper.
+
+        Args:
+            data_type: the type of input data
+            version: the version of this GAN
+            img_size: the size of the input images, which
+                are expected to be squared images of size
+                img_size*img_size*input_channels where input_channels is
+                used to initialize the Discriminator
+            nb_classes: the number of classes for the input
+                images classification, except the FAKE class, e.g. 10
+                for CIFAR-10 dataset
+            input_channels: the number of channels on the input
+                images, e.g. 3 for RGB channels
+            start_channels: the number of channels to
+                build the Generator with, that is, the number of
+                channels that are used for the dense data
+            alpha: positive coefficient for the leakyReLU
+                negative slope e.g. 0.2 as in the original paper
+            retrain_epoch: if positive, the model will be loaded from
+                the results folder
+            device: the device to use everywhere, used in case of
+                change for retraining
+
+        Raises:
+            ValueError if the size of the input images is less than 64 pixels
+            due to the operations exectued by the generator deconv layers
+        &#34;&#34;&#34;
+        # General parameters
+
+        self.data_type = data_type
+        self.version = version
+
+        self.total_epochs = 0
+        self.retrain = False
+
+        if img_size &lt; 64:
+            raise ValueError(&#34;The size of the input images has to be of at least 64 pixels!&#34;)
+
+        self.img_size = img_size
+        self.nb_classes = nb_classes
+        self.input_channels = input_channels
+        self.start_channels = start_channels
+        self.alpha = alpha
+
+        # Modules
+
+        self.D = Discriminator(img_size, nb_classes, input_channels, alpha)
+        self.G = Generator(img_size, start_channels)
+
+        # In case of retraining
+
+        if retrain_epoch is not None:
+
+            models_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/models/&#34;
+            path_to_model = models_folder + &#34;gan_&#34; + str(retrain_epoch) + &#34;.pth&#34;
+            model_data = torch.load(path_to_model, map_location=device)
+
+            # Tests for other parameters
+            if self.img_size != model_data[&#34;img_size&#34;]:
+                raise ValueError(&#34;Not same image size! Saved {}.&#34;.format(model_data[&#34;img_size&#34;]))
+            if self.nb_classes != model_data[&#34;nb_classes&#34;]:
+                raise ValueError(&#34;Not same number of classes! Saved {}.&#34;.format(model_data[&#34;nb_classes&#34;]))
+            if self.input_channels != model_data[&#34;input_channels&#34;]:
+                raise ValueError(&#34;Not same number of channels for images! Saved {}.&#34;.format(model_data[&#34;input_channels&#34;]))
+            if self.start_channels != model_data[&#34;start_channels&#34;]:
+                raise ValueError(&#34;Not same number of start channels! Saved {}.&#34;.format(model_data[&#34;start_channels&#34;]))
+            if self.alpha != model_data[&#34;alpha&#34;]:
+                raise ValueError(&#34;Not same negative slope for LeakyReLU! Saved {}.&#34;.format(model_data[&#34;alpha&#34;]))
+
+            self.total_epochs = model_data[&#34;epoch&#34;]
+            self.G.load_state_dict(model_data[&#34;G&#34;])
+            self.D.load_state_dict(model_data[&#34;D&#34;])
+
+            self.retrain = True
+
+    def cuda(self) -&gt; None:
+        &#34;&#34;&#34;Enable CUDA on this class, since it is not a Module.&#34;&#34;&#34;
+        self.G.cuda()
+        self.D.cuda()
+
+        return
+
+    def train(self) -&gt; None:
+        &#34;&#34;&#34;Go into training mode.&#34;&#34;&#34;
+        self.G.train()
+        self.D.train()
+
+        return
+
+    def eval(self) -&gt; None:
+        &#34;&#34;&#34;Go into evaluation mode.&#34;&#34;&#34;
+        self.G.eval()
+        self.D.eval()
+
+        return
+
+    def encode(self, img: torch.FloatTensor) -&gt; torch.FloatTensor:
+        &#34;&#34;&#34;Encode an input image into features.
+
+        Args:
+            img: a torch tensor containing images of
+                dimension (N, C, H, W) where C = nb_classes, H = img_size &amp; W = img_size
+                from initialization
+
+        Returns:
+            self.D.encode(img): the result of encoding
+        &#34;&#34;&#34;
+        return self.D.encode(img)
+
+    def decode(self, latent: torch.FloatTensor) -&gt; torch.FloatTensor:
+        &#34;&#34;&#34;Decode a vector of latent features.
+
+        Args:
+            latent: a torch tensor of dimension (N, C, H, W)
+                where C = 512 from latent features
+
+        Returns:
+            self.G.decode(latent): resulting image via decoding
+        &#34;&#34;&#34;
+        return self.G.decode(latent)
+
+    def train_model(self, trainloader: torch.utils.data.DataLoader, device: torch.device,
+                    epochs: int = 5, initial_lr: float = 1e-3, lr_ratio: float = 1.0, opt_decay: float = 0.9,
+                    G_decrease_epoch: int = 80, G_decrease_rate: float = 10,
+                    D_decrease_epoch: int = 80, D_decrease_rate: float = 10,
+                    save_model_step: int = 1, save_image_step: int = 5, data_classes: List = None,
+                    save_loss: bool = False, save_score: bool = False) -&gt; pd.DataFrame:
+        &#34;&#34;&#34;Train the GAN using the algorithm provided in the original paper.
+
+        Args:
+            trainloader: the input data for training
+            device: device to be used everywhere
+            epochs: the number of epochs to train the model
+            initial_lr: the learning rate to begin training with
+            lr_ratio: the ratio between the initial learning rate of the
+                discriminator and the initial learning rate of the
+                generator
+            opt_decay: the rate to use in the RMSProp optimizers
+            G_decrease_epoch: the epoch when we want to decrease the
+                learning rate of the generator
+            G_decrease_rate: the decrease rate to use for each
+                decrease epoch step for the generator
+            D_decrease_epoch: the epoch when we want to decrease the
+                learning rate of the discriminator
+            D_decrease_rate: the decrease rate to use for each
+                decrease epoch step for the discriminator
+            save_model_step: after each save model step, the model will
+                be saved in an appropriate folder
+            save_image_step: after each save image step, the model will go
+                in eval mode to generate an image per class and save them
+                in an appropriate folder
+            data_classes: the list of all classes in the input data
+            save_loss: whether we have to save this new loss
+                into the results folder
+            save_score: whether we want to save the score for each epoch
+                into the results folder
+
+        Returns:
+            loss_list: a DataFrame containing the mean loss for the Discriminator
+                and the Generator after each epoch
+        &#34;&#34;&#34;
+        self.train()
+
+        # Initializing optimizers
+        G_opt = torch.optim.RMSprop(self.G.parameters(), lr=initial_lr, alpha=opt_decay)
+        D_opt = torch.optim.RMSprop(self.D.parameters(), lr=lr_ratio*initial_lr, alpha=opt_decay)
+
+        if self.retrain:
+
+            models_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/models/&#34;
+            path_to_model = models_folder + &#34;gan_&#34; + str(self.total_epochs) + &#34;.pth&#34;
+            model_data = torch.load(path_to_model, map_location=device)
+
+            G_opt.load_state_dict(model_data[&#34;G_opt&#34;])
+            D_opt.load_state_dict(model_data[&#34;D_opt&#34;])
+
+        # Update both learning rates
+        new_G_lr = utils.decrease_lr(G_opt, self.total_epochs, G_decrease_epoch, G_decrease_rate)
+        if new_G_lr != None:
+            print(&#34;Learning rate of G has been set to {}.&#34;.format(new_G_lr))
+            G_lr = new_G_lr
+
+        new_D_lr = utils.decrease_lr(D_opt, self.total_epochs, D_decrease_epoch, D_decrease_rate)
+        if new_D_lr != None:
+            print(&#34;Learning rate of D has been set to {}.&#34;.format(new_D_lr))
+            D_lr = new_D_lr
+
+        # Initializing loss lists
+        loss_list = []
+        D_loss_value = 0
+        D_loss_list = []
+        D_loss_per_epoch = 0
+        G_loss_value = 0
+        G_loss_list = []
+        G_loss_per_epoch = 0
+
+        # Initializing loss functions
+        prob_loss = torch.nn.BCELoss()
+        mse_loss = torch.nn.MSELoss()
+
+        # Initialiazing accuracy score
+        batch_size = 0
+        score = 0
+        score_list = []
+
+        G_lr = np.around(G_opt.param_groups[0][&#34;lr&#34;], 4)
+        D_lr = np.around(D_opt.param_groups[0][&#34;lr&#34;], 4)
+
+        epoch_pbar = tqdm(range(epochs), desc=&#34;Epoch: {}, lr: {} (G) {} (D), TN: {}%&#34;.format(self.total_epochs, G_lr, D_lr, score))
+        for _ in epoch_pbar:
+
+            batch_pbar = tqdm(trainloader, desc=&#34;Batch loss: {} (G) {} (D)&#34;.format(np.around(G_loss_value, 3), np.around(D_loss_value, 3)))
+            for X_r, k in batch_pbar:
+
+                # Setting discriminator&#39;s grad to zero
+                D_opt.zero_grad()
+
+                # Input images &amp; labels
+                X_r = X_r.to(device)
+                k = k.to(device)
+                batch_size = X_r.size(0)
+
+                # Noise can help both networks to learn more
+                X_noise = utils.gen_noise(batch_size, self.input_channels, self.img_size, self.total_epochs, device)
+                X_r += X_noise
+
+                # Initialization of samples for the generator
+                Z_hat, Yk_hat = utils.fake_noise(batch_size, self.start_channels, self.nb_classes, device)
+                k_hat = utils.fake_class(batch_size, self.nb_classes, device)
+                Z_Yk_cat = torch.cat([Z_hat, Yk_hat], dim=1)
+
+                # Making a one-hot vector from input labels
+                k_hot = utils.class_to_prob(k, self.nb_classes, device)
+
+                # Making a one-hot vector from FAKE class
+                k_hat_hot = utils.class_to_prob(k_hat, self.nb_classes, device)
+
+                # Construction of generated image and prediction for both real and fake ones
+                Y = self.D(X_r)
+                X_hat = self.G(Z_Yk_cat)
+                Y_hat = self.D(X_hat)
+
+                # Computing accuracy of the discriminator
+                disc_class = torch.argmax(Y_hat, dim=1)
+                for j in range(batch_size):
+                    if disc_class[j] == self.nb_classes:
+                        score += 1
+
+                # Backpropagation for discriminator&#39;s parameters
+                D_real_loss = prob_loss(Y, k_hot)
+                D_fake_loss = prob_loss(Y_hat, k_hat_hot)
+                D_loss = D_real_loss + D_fake_loss
+                D_loss_value = D_loss.item()
+                D_loss_list.append(D_loss_value)
+                D_loss.backward(retain_graph=True)
+
+                D_opt.step()
+
+                # Setting generator&#39;s grad to zero
+                G_opt.zero_grad()
+
+                # Recalculation of prediction (modified parameters) and adv loss
+                new_Y_hat = self.D(X_hat)
+                k_fake_hot = torch.cat([Yk_hat, torch.zeros(batch_size, 1, device=device)], dim=1)
+                G_loss_adv = prob_loss(new_Y_hat, k_fake_hot)
+
+                # New encoding and decoding of image and L2 loss
+                Z = self.encode(X_r)
+                Xz_hat = self.decode(Z)
+                G_loss_L2 = mse_loss(X_r, Xz_hat)
+
+                # Backpropagation for generator&#39;s parameters
+                G_loss = G_loss_adv + G_loss_L2
+                G_loss.backward()
+                G_loss_value = G_loss.item()
+                G_loss_list.append(G_loss_value)
+
+                G_opt.step()
+
+                batch_pbar.set_description(&#34;Batch loss: {} (G) {} (D)&#34;.format(np.around(G_loss_value, 3), np.around(D_loss_value, 3)))
+
+            # Updating net&#39;s own epoch counter
+            self.total_epochs += 1
+
+            # Updating both learning rates
+            new_G_lr = utils.decrease_lr(G_opt, self.total_epochs, G_decrease_epoch, G_decrease_rate)
+            if new_G_lr != None:
+                print(&#34;Learning rate of G has been set to {}.&#34;.format(new_G_lr))
+                G_lr = np.around(new_G_lr, 4)
+
+            new_D_lr = utils.decrease_lr(D_opt, self.total_epochs, D_decrease_epoch, D_decrease_rate)
+            if new_D_lr != None:
+                print(&#34;Learning rate of D has been set to {}.&#34;.format(new_D_lr))
+                D_lr = np.around(new_D_lr, 4)
+
+            # Updating progression bar
+            score = np.around(100*score/len(trainloader.dataset), 2)
+            score_list.append([self.total_epochs, score])
+            epoch_pbar.set_description(&#34;Epochs done: {}, lr: {} (G) {} (D), TN: {}%&#34;.format(self.total_epochs, G_lr, D_lr, score))
+            score = 0
+
+            # Saving loss of both networks
+            D_loss_per_epoch = np.mean(D_loss_list)
+            D_loss_list = []
+            G_loss_per_epoch = np.mean(G_loss_list)
+            G_loss_list = []
+            loss_list.append([self.total_epochs, D_loss_per_epoch, G_loss_per_epoch])
+
+            # Saving model
+            if save_model_step &gt; 0:
+                if self.total_epochs%save_model_step == 0:
+
+                    models_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/models/&#34;
+                    model_filename = models_folder + &#34;gan_&#34; + str(self.total_epochs) + &#34;.pth&#34;
+
+                    if not os.path.exists(models_folder):
+                        os.makedirs(models_folder)
+
+                    model_data = {}
+                    model_data[&#34;epoch&#34;] = self.total_epochs
+                    model_data[&#34;G&#34;] = self.G.state_dict()
+                    model_data[&#34;D&#34;] = self.D.state_dict()
+                    model_data[&#34;G_opt&#34;] = G_opt.state_dict()
+                    model_data[&#34;D_opt&#34;] = D_opt.state_dict()
+                    model_data[&#34;start_channels&#34;] = self.start_channels
+                    model_data[&#34;img_size&#34;] = self.img_size
+                    model_data[&#34;input_channels&#34;] = self.input_channels
+                    model_data[&#34;nb_classes&#34;] = self.nb_classes
+                    model_data[&#34;alpha&#34;] = self.alpha
+
+                    torch.save(model_data, model_filename)
+
+            # Saving generated images
+            if save_image_step &gt; 0:
+                if self.total_epochs%save_image_step == 0:
+
+                    self.save_img(data_classes, device)
+
+        loss_list = pd.DataFrame(loss_list, columns=[&#34;Epoch&#34;, &#34;D_loss&#34;, &#34;G_loss&#34;])
+
+        # Saving loss
+        if save_loss:
+            self.write_loss(loss_list)
+
+        score_list = pd.DataFrame(score_list, columns=[&#34;Epoch&#34;, &#34;Score&#34;])
+
+        # Saving accuracy of the discriminator
+        if save_score:
+            self.write_score(score_list)
+
+        self.eval()
+
+        return loss_list
+
+    def show_img(self, data_classes: List, device: torch.device) -&gt; None:
+        &#34;&#34;&#34;Show a collection of images for all classes.
+
+        Args:
+            data_classes: the classes contained in the input data
+            device: the device to use everywhere
+        &#34;&#34;&#34;
+        self.eval()
+
+        Z_hat, Yk_hat = utils.fake_noise_all_classes(self.start_channels, self.nb_classes, device)
+        Z_Yk_fixed = torch.cat([Z_hat, Yk_hat], dim=1)
+
+        gen_imgs = self.G(Z_Yk_fixed)
+        class_probs = self.D(gen_imgs)
+        _, predicted_classes = torch.max(class_probs.data, 1)
+
+        for i in range(self.nb_classes):
+            gen_img = gen_imgs[i]
+            pred = predicted_classes[i]
+
+            gen_img = gen_img.cpu().detach().numpy()
+
+            plt.imshow(np.transpose(gen_img, (1, 2, 0)))
+            plt.axis(&#34;off&#34;)
+            plt.title(&#34;Label: {} (G) {} (D)&#34;.format(data_classes[i], data_classes[pred]))
+
+            plt.show()
+
+        self.train()
+
+        return
+
+    def save_img(self, data_classes: List, device: torch.device) -&gt; None:
+        &#34;&#34;&#34;Plot and save a collection of images for all classes.
+
+        Args:
+            data_classes: the classes contained in the input data
+            device: the device to use everywhere
+        &#34;&#34;&#34;
+        self.eval()
+
+        Z_hat, Yk_hat = utils.fake_noise_all_classes(self.start_channels, self.nb_classes, device)
+        Z_Yk_fixed = torch.cat([Z_hat, Yk_hat], dim=1)
+
+        gen_imgs = self.G(Z_Yk_fixed)
+        class_probs = self.D(gen_imgs)
+        _, predicted_classes = torch.max(class_probs.data, 1)
+
+        images_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/images/epoch_&#34; + str(self.total_epochs) + &#34;/&#34;
+        if not os.path.exists(images_folder):
+            os.makedirs(images_folder)
+
+        for i in range(self.nb_classes):
+            gen_img = gen_imgs[i]
+            pred = predicted_classes[i]
+
+            gen_img = gen_img.cpu().detach().numpy()
+
+            plt.imshow(np.transpose(gen_img, (1, 2, 0)))
+            plt.axis(&#34;off&#34;)
+            plt.title(&#34;Label: {} (G) {} (D)&#34;.format(data_classes[i], data_classes[pred]))
+
+            path_to_image = images_folder + &#34;G_&#34; + data_classes[i] + &#34;_D_&#34; + data_classes[pred] + &#34;.jpg&#34;
+            plt.savefig(path_to_image)
+
+        self.train()
+
+        return
+
+    def save_raw_img(self, data_classes: List, device: torch.device) -&gt; None:
+        &#34;&#34;&#34;Save a collection of images for all classes as PIL images.
+
+        Args:
+            data_classes: the classes contained in the input data
+            device: the device to use everywhere
+        &#34;&#34;&#34;
+        pil_transform = transforms.ToPILImage()
+
+        self.eval()
+
+        Z_hat, Yk_hat = utils.fake_noise_all_classes(self.start_channels, self.nb_classes, device)
+        Z_Yk_fixed = torch.cat([Z_hat, Yk_hat], dim=1)
+
+        gen_imgs = self.G(Z_Yk_fixed)
+
+        images_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/raw_images/&#34;
+        if not os.path.exists(images_folder):
+            os.makedirs(images_folder)
+
+        for i in range(self.nb_classes):
+            gen_img = gen_imgs[i]
+
+            gen_img = pil_transform(gen_img)
+
+            path_to_image = images_folder + data_classes[i] + &#34;_&#34; + str(self.total_epochs) + &#34;.jpg&#34;
+            gen_img.save(path_to_image)
+
+        self.train()
+
+        return
+
+    def write_loss(self: nn.Module, loss_list: pd.DataFrame) -&gt; None:
+        &#34;&#34;&#34;Write the content of loss_list into a csv file for future reading.
+
+        It will append the data if the model is being retrained.
+
+        Args:
+            loss_list: a dataframe containing the total epochs counter, the
+                loss for Generator and the loss for Discriminator
+        &#34;&#34;&#34;
+        losses_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/losses/&#34;
+        if not os.path.exists(losses_folder):
+            os.makedirs(losses_folder)
+        path_to_loss = losses_folder + &#34;loss.csv&#34;
+
+        if self.retrain == False:
+            loss_list.to_csv(path_to_loss, columns=loss_list.columns, header=True, index=False)
+        else:
+            loss_data = pd.read_csv(path_to_loss, header=0)
+            loss_list = pd.concat([loss_data, loss_list], ignore_index=True)
+            loss_list.to_csv(path_to_loss, columns=loss_list.columns, header=True, index=False)
+
+        return
+
+    def write_score(self: nn.Module, score_list: pd.DataFrame) -&gt; None:
+        &#34;&#34;&#34;Write the content of score_list into a csv file for future reading.
+
+        It will append the data if the model is being retrained.
+
+        Args:
+            score_list: a dataframe containing the total epochs counter, and the
+                score for Discriminator
+        &#34;&#34;&#34;
+        scores_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/scores/&#34;
+        if not os.path.exists(scores_folder):
+            os.makedirs(scores_folder)
+        path_to_score = scores_folder + &#34;score.csv&#34;
+
+        if self.retrain == False:
+            score_list.to_csv(path_to_score, columns=score_list.columns, header=True, index=False)
+        else:
+            score_data = pd.read_csv(path_to_score, header=0)
+            score_list = pd.concat([score_data, score_list], ignore_index=True)
+            score_list.to_csv(path_to_score, columns=score_list.columns, header=True, index=False)
+
+        return</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.gan.artgan.ArtGAN.cuda"><code class="name flex">
+<span>def <span class="ident">cuda</span></span>(<span>self) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enable CUDA on this class, since it is not a Module.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cuda(self) -&gt; None:
+    &#34;&#34;&#34;Enable CUDA on this class, since it is not a Module.&#34;&#34;&#34;
+    self.G.cuda()
+    self.D.cuda()
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.decode"><code class="name flex">
+<span>def <span class="ident">decode</span></span>(<span>self, latent: torch.FloatTensor) ‑> torch.FloatTensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decode a vector of latent features.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>latent</code></strong></dt>
+<dd>a torch tensor of dimension (N, C, H, W)
+where C = 512 from latent features</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>self.G.decode(latent): resulting image via decoding</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decode(self, latent: torch.FloatTensor) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Decode a vector of latent features.
+
+    Args:
+        latent: a torch tensor of dimension (N, C, H, W)
+            where C = 512 from latent features
+
+    Returns:
+        self.G.decode(latent): resulting image via decoding
+    &#34;&#34;&#34;
+    return self.G.decode(latent)</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.encode"><code class="name flex">
+<span>def <span class="ident">encode</span></span>(<span>self, img: torch.FloatTensor) ‑> torch.FloatTensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Encode an input image into features.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>img</code></strong></dt>
+<dd>a torch tensor containing images of
+dimension (N, C, H, W) where C = nb_classes, H = img_size &amp; W = img_size
+from initialization</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>self.D.encode(img): the result of encoding</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encode(self, img: torch.FloatTensor) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Encode an input image into features.
+
+    Args:
+        img: a torch tensor containing images of
+            dimension (N, C, H, W) where C = nb_classes, H = img_size &amp; W = img_size
+            from initialization
+
+    Returns:
+        self.D.encode(img): the result of encoding
+    &#34;&#34;&#34;
+    return self.D.encode(img)</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.eval"><code class="name flex">
+<span>def <span class="ident">eval</span></span>(<span>self) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Go into evaluation mode.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def eval(self) -&gt; None:
+    &#34;&#34;&#34;Go into evaluation mode.&#34;&#34;&#34;
+    self.G.eval()
+    self.D.eval()
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.save_img"><code class="name flex">
+<span>def <span class="ident">save_img</span></span>(<span>self, data_classes: List, device: torch.device) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot and save a collection of images for all classes.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data_classes</code></strong></dt>
+<dd>the classes contained in the input data</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to use everywhere</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_img(self, data_classes: List, device: torch.device) -&gt; None:
+    &#34;&#34;&#34;Plot and save a collection of images for all classes.
+
+    Args:
+        data_classes: the classes contained in the input data
+        device: the device to use everywhere
+    &#34;&#34;&#34;
+    self.eval()
+
+    Z_hat, Yk_hat = utils.fake_noise_all_classes(self.start_channels, self.nb_classes, device)
+    Z_Yk_fixed = torch.cat([Z_hat, Yk_hat], dim=1)
+
+    gen_imgs = self.G(Z_Yk_fixed)
+    class_probs = self.D(gen_imgs)
+    _, predicted_classes = torch.max(class_probs.data, 1)
+
+    images_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/images/epoch_&#34; + str(self.total_epochs) + &#34;/&#34;
+    if not os.path.exists(images_folder):
+        os.makedirs(images_folder)
+
+    for i in range(self.nb_classes):
+        gen_img = gen_imgs[i]
+        pred = predicted_classes[i]
+
+        gen_img = gen_img.cpu().detach().numpy()
+
+        plt.imshow(np.transpose(gen_img, (1, 2, 0)))
+        plt.axis(&#34;off&#34;)
+        plt.title(&#34;Label: {} (G) {} (D)&#34;.format(data_classes[i], data_classes[pred]))
+
+        path_to_image = images_folder + &#34;G_&#34; + data_classes[i] + &#34;_D_&#34; + data_classes[pred] + &#34;.jpg&#34;
+        plt.savefig(path_to_image)
+
+    self.train()
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.save_raw_img"><code class="name flex">
+<span>def <span class="ident">save_raw_img</span></span>(<span>self, data_classes: List, device: torch.device) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save a collection of images for all classes as PIL images.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data_classes</code></strong></dt>
+<dd>the classes contained in the input data</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to use everywhere</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_raw_img(self, data_classes: List, device: torch.device) -&gt; None:
+    &#34;&#34;&#34;Save a collection of images for all classes as PIL images.
+
+    Args:
+        data_classes: the classes contained in the input data
+        device: the device to use everywhere
+    &#34;&#34;&#34;
+    pil_transform = transforms.ToPILImage()
+
+    self.eval()
+
+    Z_hat, Yk_hat = utils.fake_noise_all_classes(self.start_channels, self.nb_classes, device)
+    Z_Yk_fixed = torch.cat([Z_hat, Yk_hat], dim=1)
+
+    gen_imgs = self.G(Z_Yk_fixed)
+
+    images_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/raw_images/&#34;
+    if not os.path.exists(images_folder):
+        os.makedirs(images_folder)
+
+    for i in range(self.nb_classes):
+        gen_img = gen_imgs[i]
+
+        gen_img = pil_transform(gen_img)
+
+        path_to_image = images_folder + data_classes[i] + &#34;_&#34; + str(self.total_epochs) + &#34;.jpg&#34;
+        gen_img.save(path_to_image)
+
+    self.train()
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.show_img"><code class="name flex">
+<span>def <span class="ident">show_img</span></span>(<span>self, data_classes: List, device: torch.device) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Show a collection of images for all classes.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data_classes</code></strong></dt>
+<dd>the classes contained in the input data</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to use everywhere</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def show_img(self, data_classes: List, device: torch.device) -&gt; None:
+    &#34;&#34;&#34;Show a collection of images for all classes.
+
+    Args:
+        data_classes: the classes contained in the input data
+        device: the device to use everywhere
+    &#34;&#34;&#34;
+    self.eval()
+
+    Z_hat, Yk_hat = utils.fake_noise_all_classes(self.start_channels, self.nb_classes, device)
+    Z_Yk_fixed = torch.cat([Z_hat, Yk_hat], dim=1)
+
+    gen_imgs = self.G(Z_Yk_fixed)
+    class_probs = self.D(gen_imgs)
+    _, predicted_classes = torch.max(class_probs.data, 1)
+
+    for i in range(self.nb_classes):
+        gen_img = gen_imgs[i]
+        pred = predicted_classes[i]
+
+        gen_img = gen_img.cpu().detach().numpy()
+
+        plt.imshow(np.transpose(gen_img, (1, 2, 0)))
+        plt.axis(&#34;off&#34;)
+        plt.title(&#34;Label: {} (G) {} (D)&#34;.format(data_classes[i], data_classes[pred]))
+
+        plt.show()
+
+    self.train()
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.train"><code class="name flex">
+<span>def <span class="ident">train</span></span>(<span>self) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Go into training mode.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def train(self) -&gt; None:
+    &#34;&#34;&#34;Go into training mode.&#34;&#34;&#34;
+    self.G.train()
+    self.D.train()
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.train_model"><code class="name flex">
+<span>def <span class="ident">train_model</span></span>(<span>self, trainloader: torch.utils.data.dataloader.DataLoader, device: torch.device, epochs: int = 5, initial_lr: float = 0.001, lr_ratio: float = 1.0, opt_decay: float = 0.9, G_decrease_epoch: int = 80, G_decrease_rate: float = 10, D_decrease_epoch: int = 80, D_decrease_rate: float = 10, save_model_step: int = 1, save_image_step: int = 5, data_classes: List = None, save_loss: bool = False, save_score: bool = False) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Train the GAN using the algorithm provided in the original paper.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>trainloader</code></strong></dt>
+<dd>the input data for training</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>device to be used everywhere</dd>
+<dt><strong><code>epochs</code></strong></dt>
+<dd>the number of epochs to train the model</dd>
+<dt><strong><code>initial_lr</code></strong></dt>
+<dd>the learning rate to begin training with</dd>
+<dt><strong><code>lr_ratio</code></strong></dt>
+<dd>the ratio between the initial learning rate of the
+discriminator and the initial learning rate of the
+generator</dd>
+<dt><strong><code>opt_decay</code></strong></dt>
+<dd>the rate to use in the RMSProp optimizers</dd>
+<dt><strong><code>G_decrease_epoch</code></strong></dt>
+<dd>the epoch when we want to decrease the
+learning rate of the generator</dd>
+<dt><strong><code>G_decrease_rate</code></strong></dt>
+<dd>the decrease rate to use for each
+decrease epoch step for the generator</dd>
+<dt><strong><code>D_decrease_epoch</code></strong></dt>
+<dd>the epoch when we want to decrease the
+learning rate of the discriminator</dd>
+<dt><strong><code>D_decrease_rate</code></strong></dt>
+<dd>the decrease rate to use for each
+decrease epoch step for the discriminator</dd>
+<dt><strong><code>save_model_step</code></strong></dt>
+<dd>after each save model step, the model will
+be saved in an appropriate folder</dd>
+<dt><strong><code>save_image_step</code></strong></dt>
+<dd>after each save image step, the model will go
+in eval mode to generate an image per class and save them
+in an appropriate folder</dd>
+<dt><strong><code>data_classes</code></strong></dt>
+<dd>the list of all classes in the input data</dd>
+<dt><strong><code>save_loss</code></strong></dt>
+<dd>whether we have to save this new loss
+into the results folder</dd>
+<dt><strong><code>save_score</code></strong></dt>
+<dd>whether we want to save the score for each epoch
+into the results folder</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>loss_list</code></dt>
+<dd>a DataFrame containing the mean loss for the Discriminator
+and the Generator after each epoch</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def train_model(self, trainloader: torch.utils.data.DataLoader, device: torch.device,
+                epochs: int = 5, initial_lr: float = 1e-3, lr_ratio: float = 1.0, opt_decay: float = 0.9,
+                G_decrease_epoch: int = 80, G_decrease_rate: float = 10,
+                D_decrease_epoch: int = 80, D_decrease_rate: float = 10,
+                save_model_step: int = 1, save_image_step: int = 5, data_classes: List = None,
+                save_loss: bool = False, save_score: bool = False) -&gt; pd.DataFrame:
+    &#34;&#34;&#34;Train the GAN using the algorithm provided in the original paper.
+
+    Args:
+        trainloader: the input data for training
+        device: device to be used everywhere
+        epochs: the number of epochs to train the model
+        initial_lr: the learning rate to begin training with
+        lr_ratio: the ratio between the initial learning rate of the
+            discriminator and the initial learning rate of the
+            generator
+        opt_decay: the rate to use in the RMSProp optimizers
+        G_decrease_epoch: the epoch when we want to decrease the
+            learning rate of the generator
+        G_decrease_rate: the decrease rate to use for each
+            decrease epoch step for the generator
+        D_decrease_epoch: the epoch when we want to decrease the
+            learning rate of the discriminator
+        D_decrease_rate: the decrease rate to use for each
+            decrease epoch step for the discriminator
+        save_model_step: after each save model step, the model will
+            be saved in an appropriate folder
+        save_image_step: after each save image step, the model will go
+            in eval mode to generate an image per class and save them
+            in an appropriate folder
+        data_classes: the list of all classes in the input data
+        save_loss: whether we have to save this new loss
+            into the results folder
+        save_score: whether we want to save the score for each epoch
+            into the results folder
+
+    Returns:
+        loss_list: a DataFrame containing the mean loss for the Discriminator
+            and the Generator after each epoch
+    &#34;&#34;&#34;
+    self.train()
+
+    # Initializing optimizers
+    G_opt = torch.optim.RMSprop(self.G.parameters(), lr=initial_lr, alpha=opt_decay)
+    D_opt = torch.optim.RMSprop(self.D.parameters(), lr=lr_ratio*initial_lr, alpha=opt_decay)
+
+    if self.retrain:
+
+        models_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/models/&#34;
+        path_to_model = models_folder + &#34;gan_&#34; + str(self.total_epochs) + &#34;.pth&#34;
+        model_data = torch.load(path_to_model, map_location=device)
+
+        G_opt.load_state_dict(model_data[&#34;G_opt&#34;])
+        D_opt.load_state_dict(model_data[&#34;D_opt&#34;])
+
+    # Update both learning rates
+    new_G_lr = utils.decrease_lr(G_opt, self.total_epochs, G_decrease_epoch, G_decrease_rate)
+    if new_G_lr != None:
+        print(&#34;Learning rate of G has been set to {}.&#34;.format(new_G_lr))
+        G_lr = new_G_lr
+
+    new_D_lr = utils.decrease_lr(D_opt, self.total_epochs, D_decrease_epoch, D_decrease_rate)
+    if new_D_lr != None:
+        print(&#34;Learning rate of D has been set to {}.&#34;.format(new_D_lr))
+        D_lr = new_D_lr
+
+    # Initializing loss lists
+    loss_list = []
+    D_loss_value = 0
+    D_loss_list = []
+    D_loss_per_epoch = 0
+    G_loss_value = 0
+    G_loss_list = []
+    G_loss_per_epoch = 0
+
+    # Initializing loss functions
+    prob_loss = torch.nn.BCELoss()
+    mse_loss = torch.nn.MSELoss()
+
+    # Initialiazing accuracy score
+    batch_size = 0
+    score = 0
+    score_list = []
+
+    G_lr = np.around(G_opt.param_groups[0][&#34;lr&#34;], 4)
+    D_lr = np.around(D_opt.param_groups[0][&#34;lr&#34;], 4)
+
+    epoch_pbar = tqdm(range(epochs), desc=&#34;Epoch: {}, lr: {} (G) {} (D), TN: {}%&#34;.format(self.total_epochs, G_lr, D_lr, score))
+    for _ in epoch_pbar:
+
+        batch_pbar = tqdm(trainloader, desc=&#34;Batch loss: {} (G) {} (D)&#34;.format(np.around(G_loss_value, 3), np.around(D_loss_value, 3)))
+        for X_r, k in batch_pbar:
+
+            # Setting discriminator&#39;s grad to zero
+            D_opt.zero_grad()
+
+            # Input images &amp; labels
+            X_r = X_r.to(device)
+            k = k.to(device)
+            batch_size = X_r.size(0)
+
+            # Noise can help both networks to learn more
+            X_noise = utils.gen_noise(batch_size, self.input_channels, self.img_size, self.total_epochs, device)
+            X_r += X_noise
+
+            # Initialization of samples for the generator
+            Z_hat, Yk_hat = utils.fake_noise(batch_size, self.start_channels, self.nb_classes, device)
+            k_hat = utils.fake_class(batch_size, self.nb_classes, device)
+            Z_Yk_cat = torch.cat([Z_hat, Yk_hat], dim=1)
+
+            # Making a one-hot vector from input labels
+            k_hot = utils.class_to_prob(k, self.nb_classes, device)
+
+            # Making a one-hot vector from FAKE class
+            k_hat_hot = utils.class_to_prob(k_hat, self.nb_classes, device)
+
+            # Construction of generated image and prediction for both real and fake ones
+            Y = self.D(X_r)
+            X_hat = self.G(Z_Yk_cat)
+            Y_hat = self.D(X_hat)
+
+            # Computing accuracy of the discriminator
+            disc_class = torch.argmax(Y_hat, dim=1)
+            for j in range(batch_size):
+                if disc_class[j] == self.nb_classes:
+                    score += 1
+
+            # Backpropagation for discriminator&#39;s parameters
+            D_real_loss = prob_loss(Y, k_hot)
+            D_fake_loss = prob_loss(Y_hat, k_hat_hot)
+            D_loss = D_real_loss + D_fake_loss
+            D_loss_value = D_loss.item()
+            D_loss_list.append(D_loss_value)
+            D_loss.backward(retain_graph=True)
+
+            D_opt.step()
+
+            # Setting generator&#39;s grad to zero
+            G_opt.zero_grad()
+
+            # Recalculation of prediction (modified parameters) and adv loss
+            new_Y_hat = self.D(X_hat)
+            k_fake_hot = torch.cat([Yk_hat, torch.zeros(batch_size, 1, device=device)], dim=1)
+            G_loss_adv = prob_loss(new_Y_hat, k_fake_hot)
+
+            # New encoding and decoding of image and L2 loss
+            Z = self.encode(X_r)
+            Xz_hat = self.decode(Z)
+            G_loss_L2 = mse_loss(X_r, Xz_hat)
+
+            # Backpropagation for generator&#39;s parameters
+            G_loss = G_loss_adv + G_loss_L2
+            G_loss.backward()
+            G_loss_value = G_loss.item()
+            G_loss_list.append(G_loss_value)
+
+            G_opt.step()
+
+            batch_pbar.set_description(&#34;Batch loss: {} (G) {} (D)&#34;.format(np.around(G_loss_value, 3), np.around(D_loss_value, 3)))
+
+        # Updating net&#39;s own epoch counter
+        self.total_epochs += 1
+
+        # Updating both learning rates
+        new_G_lr = utils.decrease_lr(G_opt, self.total_epochs, G_decrease_epoch, G_decrease_rate)
+        if new_G_lr != None:
+            print(&#34;Learning rate of G has been set to {}.&#34;.format(new_G_lr))
+            G_lr = np.around(new_G_lr, 4)
+
+        new_D_lr = utils.decrease_lr(D_opt, self.total_epochs, D_decrease_epoch, D_decrease_rate)
+        if new_D_lr != None:
+            print(&#34;Learning rate of D has been set to {}.&#34;.format(new_D_lr))
+            D_lr = np.around(new_D_lr, 4)
+
+        # Updating progression bar
+        score = np.around(100*score/len(trainloader.dataset), 2)
+        score_list.append([self.total_epochs, score])
+        epoch_pbar.set_description(&#34;Epochs done: {}, lr: {} (G) {} (D), TN: {}%&#34;.format(self.total_epochs, G_lr, D_lr, score))
+        score = 0
+
+        # Saving loss of both networks
+        D_loss_per_epoch = np.mean(D_loss_list)
+        D_loss_list = []
+        G_loss_per_epoch = np.mean(G_loss_list)
+        G_loss_list = []
+        loss_list.append([self.total_epochs, D_loss_per_epoch, G_loss_per_epoch])
+
+        # Saving model
+        if save_model_step &gt; 0:
+            if self.total_epochs%save_model_step == 0:
+
+                models_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/models/&#34;
+                model_filename = models_folder + &#34;gan_&#34; + str(self.total_epochs) + &#34;.pth&#34;
+
+                if not os.path.exists(models_folder):
+                    os.makedirs(models_folder)
+
+                model_data = {}
+                model_data[&#34;epoch&#34;] = self.total_epochs
+                model_data[&#34;G&#34;] = self.G.state_dict()
+                model_data[&#34;D&#34;] = self.D.state_dict()
+                model_data[&#34;G_opt&#34;] = G_opt.state_dict()
+                model_data[&#34;D_opt&#34;] = D_opt.state_dict()
+                model_data[&#34;start_channels&#34;] = self.start_channels
+                model_data[&#34;img_size&#34;] = self.img_size
+                model_data[&#34;input_channels&#34;] = self.input_channels
+                model_data[&#34;nb_classes&#34;] = self.nb_classes
+                model_data[&#34;alpha&#34;] = self.alpha
+
+                torch.save(model_data, model_filename)
+
+        # Saving generated images
+        if save_image_step &gt; 0:
+            if self.total_epochs%save_image_step == 0:
+
+                self.save_img(data_classes, device)
+
+    loss_list = pd.DataFrame(loss_list, columns=[&#34;Epoch&#34;, &#34;D_loss&#34;, &#34;G_loss&#34;])
+
+    # Saving loss
+    if save_loss:
+        self.write_loss(loss_list)
+
+    score_list = pd.DataFrame(score_list, columns=[&#34;Epoch&#34;, &#34;Score&#34;])
+
+    # Saving accuracy of the discriminator
+    if save_score:
+        self.write_score(score_list)
+
+    self.eval()
+
+    return loss_list</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.write_loss"><code class="name flex">
+<span>def <span class="ident">write_loss</span></span>(<span>self: torch.nn.modules.module.Module, loss_list: pandas.core.frame.DataFrame) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write the content of loss_list into a csv file for future reading.</p>
+<p>It will append the data if the model is being retrained.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>loss_list</code></strong></dt>
+<dd>a dataframe containing the total epochs counter, the
+loss for Generator and the loss for Discriminator</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_loss(self: nn.Module, loss_list: pd.DataFrame) -&gt; None:
+    &#34;&#34;&#34;Write the content of loss_list into a csv file for future reading.
+
+    It will append the data if the model is being retrained.
+
+    Args:
+        loss_list: a dataframe containing the total epochs counter, the
+            loss for Generator and the loss for Discriminator
+    &#34;&#34;&#34;
+    losses_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/losses/&#34;
+    if not os.path.exists(losses_folder):
+        os.makedirs(losses_folder)
+    path_to_loss = losses_folder + &#34;loss.csv&#34;
+
+    if self.retrain == False:
+        loss_list.to_csv(path_to_loss, columns=loss_list.columns, header=True, index=False)
+    else:
+        loss_data = pd.read_csv(path_to_loss, header=0)
+        loss_list = pd.concat([loss_data, loss_list], ignore_index=True)
+        loss_list.to_csv(path_to_loss, columns=loss_list.columns, header=True, index=False)
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="src.gan.artgan.ArtGAN.write_score"><code class="name flex">
+<span>def <span class="ident">write_score</span></span>(<span>self: torch.nn.modules.module.Module, score_list: pandas.core.frame.DataFrame) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write the content of score_list into a csv file for future reading.</p>
+<p>It will append the data if the model is being retrained.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>score_list</code></strong></dt>
+<dd>a dataframe containing the total epochs counter, and the
+score for Discriminator</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_score(self: nn.Module, score_list: pd.DataFrame) -&gt; None:
+    &#34;&#34;&#34;Write the content of score_list into a csv file for future reading.
+
+    It will append the data if the model is being retrained.
+
+    Args:
+        score_list: a dataframe containing the total epochs counter, and the
+            score for Discriminator
+    &#34;&#34;&#34;
+    scores_folder = &#34;results/&#34; + self.data_type + &#34;_&#34; + self.version + &#34;/scores/&#34;
+    if not os.path.exists(scores_folder):
+        os.makedirs(scores_folder)
+    path_to_score = scores_folder + &#34;score.csv&#34;
+
+    if self.retrain == False:
+        score_list.to_csv(path_to_score, columns=score_list.columns, header=True, index=False)
+    else:
+        score_data = pd.read_csv(path_to_score, header=0)
+        score_list = pd.concat([score_data, score_list], ignore_index=True)
+        score_list.to_csv(path_to_score, columns=score_list.columns, header=True, index=False)
+
+    return</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.gan" href="index.html">src.gan</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.gan.artgan.ArtGAN" href="#src.gan.artgan.ArtGAN">ArtGAN</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.gan.artgan.ArtGAN.cuda" href="#src.gan.artgan.ArtGAN.cuda">cuda</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.decode" href="#src.gan.artgan.ArtGAN.decode">decode</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.encode" href="#src.gan.artgan.ArtGAN.encode">encode</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.eval" href="#src.gan.artgan.ArtGAN.eval">eval</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.save_img" href="#src.gan.artgan.ArtGAN.save_img">save_img</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.save_raw_img" href="#src.gan.artgan.ArtGAN.save_raw_img">save_raw_img</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.show_img" href="#src.gan.artgan.ArtGAN.show_img">show_img</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.train" href="#src.gan.artgan.ArtGAN.train">train</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.train_model" href="#src.gan.artgan.ArtGAN.train_model">train_model</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.write_loss" href="#src.gan.artgan.ArtGAN.write_loss">write_loss</a></code></li>
+<li><code><a title="src.gan.artgan.ArtGAN.write_score" href="#src.gan.artgan.ArtGAN.write_score">write_score</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

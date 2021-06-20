@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>src.utils API documentation</title>
+<meta name="description" content="Gather multiple functions to enhance the readibility of the code …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Gather multiple functions to enhance the readibility of the code.</p>
+<p>The majority of the functions are generating noise to train the ArtGAN,
+as well as transforming vectors.
+Some functions allow to work with images.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Gather multiple functions to enhance the readibility of the code.
+
+The majority of the functions are generating noise to train the ArtGAN,
+as well as transforming vectors.
+Some functions allow to work with images.
+&#34;&#34;&#34;
+
+
+# Importing Python packages
+import os
+import sys 
+path = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(path)
+from typing import Tuple
+import random
+import torch
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+
+
+def gen_noise(batch_size: int, input_channels: int, img_size: int,
+              epoch: int, device: torch.device) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Generate gaussian noise to be added to input data.
+
+    Args:
+        batch_size: the size of batches
+        input_channels: the number of channels in the input images
+            e.g. 3 for RGB
+        img_size: the size of the input images, expected to be
+            squared images
+        epoch: the epoch of training
+        device: the device to use everywhere
+
+    Returns:
+        noise: a tensor of normal noise to add to images
+    &#34;&#34;&#34;
+    size = (batch_size, input_channels, img_size, img_size)
+    noise = torch.normal(0.0, 0.1/(epoch+1), size, device=device)
+
+    return noise
+
+def fake_noise(batch_size: int, start_channels: int, nb_classes: int,
+               device: torch.device) -&gt; Tuple[torch.FloatTensor]:
+    &#34;&#34;&#34;Generate sample noise for the Generator.
+
+    Generate a sample of data from a noise distribution (a
+    Gaussian distribution) and a choice of class for the fake
+    image construction for the Generator.
+
+    Args:
+        batch_size: the number of images per batch
+        start_channels: the number of channels for the
+            first deconvolutional layer of the Generator, e.g.
+            100
+        nb_classes: the number of classes of the dataset,
+            excluding the FAKE class, e.g. 10 for CIFAR-10
+        device: the device to be used to put the
+            data on
+
+    Returns:
+        Z_hat: a tensor of size (N, C) where N is
+            the batch_size and C the start_channels
+        Yk_hat: a tensor of size (N, C) where N is
+            the batch_size and C the nb_classes, where a random
+            class is set to 1
+    &#34;&#34;&#34;
+    Z_hat = torch.randn(batch_size, start_channels-nb_classes, device=device)
+
+    Yk_hat = torch.zeros(batch_size, nb_classes, device=device)
+    for j in range(batch_size):
+        random_class = random.randint(0, nb_classes-1)
+        Yk_hat[j][random_class] = 1
+
+    return Z_hat, Yk_hat
+
+def fake_class(batch_size: int, nb_classes: int, device: torch.device) -&gt; torch.LongTensor:
+    &#34;&#34;&#34;Create the vector encoding FAKE attribute.
+
+    Creates a vector of given length where the class for
+    every image is the FAKE attribute.
+
+    Args:
+        batch_size: the number of images in the fake data
+        nb_classes: the number of classes in the real data,
+            excluding FAKE class
+        device: the device to put everywhere
+
+    Returns:
+        fake_vector: a tensor of size (N) where N is the batch
+            size and each value is the number of classes, ie the
+            FAKE class
+    &#34;&#34;&#34;
+    fake_vector = torch.full((batch_size,), nb_classes, device=device)
+    fake_vector = fake_vector.float()
+
+    return fake_vector
+
+def prob_to_class(prob_vector: torch.FloatTensor, device: torch.device) -&gt; torch.LongTensor:
+    &#34;&#34;&#34;Convert one-hot vector to a vector of probabilities.
+
+    Convert a vector containing probabilities per each class
+    to a new vector having for each value the class with highest
+    probability.
+
+    Args:
+        prob_vector: a tensor of size (N, C) where N
+            is the batch size and C is the number of classes
+        device: the device to put the data on
+
+    Returns:
+        class_vector: a tensor of size (N, 1) where
+            N is the batch size and the value contained is the class
+            with highest probability in prob_vector
+
+    Raises:
+        ValueError if the dimension of the tensor is incorrect
+    &#34;&#34;&#34;
+    if len(prob_vector.size()) != 2:
+        raise ValueError(&#34;This function needs a 2-dimensional tensor!&#34;)
+
+    batch_size = prob_vector.size(0)
+    class_vector = torch.zeros(batch_size, dtype=torch.long, device=device)
+
+    for j in range(batch_size):
+        class_vector[j] = torch.argmax(prob_vector[j])
+
+    return class_vector
+
+def class_to_prob(class_vector: torch.LongTensor, nb_classes: int,
+                  device: torch.device) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Convert a vector containing classes to a one-hot vector.
+
+    Convert a vector containing unique value for a class attribute to
+    a one-hot vector containing probability, zero everywhere except at the
+    class index.
+
+    Args:
+        class_vector: a tensor of dimension (N, 1) where N is the batch
+            size and the value is the class
+        nb_classes: the number of classes in the input images, excepting the
+            FAKE class
+        device: the device to use everywhere
+
+    Returns:
+        prob_vector: a vector of probabilities where 1 is set to the former
+            class attribute of each vector
+
+    Raises:
+        ValueError if the dimension of the input tensor is larger than 2
+    &#34;&#34;&#34;
+    if len(class_vector.size()) &gt; 2:
+        raise ValueError(&#34;The vector of classes must be of dimension less than 3!&#34;)
+
+    batch_size = class_vector.size(0)
+
+    prob_vector = torch.zeros((batch_size, nb_classes+1), device=device)
+    for i in range(batch_size):
+        if len(class_vector.size()) == 1:
+            prob_vector[i][class_vector[i].long()] = 1
+        else:
+            prob_vector[i][class_vector[i][0].long()] = 1
+
+    return prob_vector
+
+def decrease_lr(optimizer: torch.optim, current_epoch: int, lr_decay_epoch: int = 80,
+                lr_decay_rate: float = 10) -&gt; float:
+    &#34;&#34;&#34;Help managing the learning rate of RMSProp optimizers.
+
+    The learning rate of the given optimizer is modified after each
+    step of epochs to enhance learning.
+
+    Args:
+        optimizer: the optimizer from PyTorch
+        current_epoch: the current epoch of the training process
+        lr_decay_epoch: step of the decreasing
+        lr_decay_rate: the rate to divide the learning rate with,
+            after each step of epochs
+
+    Returns:
+        new_lr: the new learning rate for the optimizer
+    &#34;&#34;&#34;
+    new_lr = None
+    if current_epoch &gt; 0 and (current_epoch%lr_decay_epoch) == 0:
+
+        for param_group in optimizer.param_groups:
+            param_group[&#34;lr&#34;] /= lr_decay_rate
+            new_lr = param_group[&#34;lr&#34;]
+
+    return new_lr
+
+def fake_noise_one_class(start_channels: int, nb_classes: int, chosen_class: int,
+                         device: torch.device) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Generate an input vector for the Generator with specified class.
+
+    Args:
+        start_channels: the number of channels in the input data for
+            the generator
+        nb_classes: the number of classes in the input images
+        chosen_class: the index of the chosen class
+        device: the device to use everywhere
+
+    Returns:
+        Z_Yk_fixed: a tensor of noise and the chosen class index
+
+    Raises:
+        ValueError if the chosen class is greater than the number of
+            classes
+    &#34;&#34;&#34;
+    if chosen_class &gt;= nb_classes:
+        raise ValueError(&#34;The chosen class is greater than the number of classes!&#34;)
+
+    Z_hat = torch.randn(1, start_channels-nb_classes, device=device)
+
+    Yk_hat = torch.zeros(1, nb_classes, device=device)
+    Yk_hat[0][chosen_class] = 1
+
+    Z_Yk_hat = torch.cat([Z_hat, Yk_hat], dim=1)
+
+    return Z_Yk_hat
+
+def fake_noise_all_classes(start_channels: int, nb_classes: int,
+                           device: torch.device) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Generate an input vector for the Generator with all classes.
+
+    Args:
+        start_channels: the number of channels in the input data for
+            the generator
+        nb_classes: the number of classes in the input images
+        device: the device to use everywhere
+
+    Returns:
+        Z_hat: a tensor of noise
+        Yk_hat: the corresponding labels
+    &#34;&#34;&#34;
+    Z_hat = torch.randn(nb_classes, start_channels-nb_classes, device=device)
+
+    Yk_hat = torch.zeros(nb_classes, nb_classes, device=device)
+    for i in range(nb_classes):
+        Yk_hat[i][i] = 1
+
+    return Z_hat, Yk_hat
+
+def imshow(img: np.ndarray, epoch: int, label: str) -&gt; None:
+    &#34;&#34;&#34;Plot and save an image from Tensor.
+
+    Args:
+        img: the image to plot as a tensor
+        epoch: the epoch to display in the title
+        label: the label/class to display in the title
+    &#34;&#34;&#34;
+    img = img / 2 + 0.5     # unnormalize
+    plt.imshow(np.transpose(img, (1, 2, 0)))
+    plt.title(&#34;Epoch {} and class {}&#34;.format(epoch, label))
+    plt.axis(&#34;off&#34;)
+    plt.tight_layout()
+    plt.savefig(&#34;results/images/gan_{}_class_{}&#34;.format(epoch, label))
+    plt.show()
+
+def concat_h(img1: Image, img2: Image) -&gt; Image:
+    &#34;&#34;&#34;Concatenate two PIL images horizontally.
+
+    Args:
+        img1: the first image
+        img2: the second image
+
+    Returns:
+        dst: the concatenated image
+
+    Raises:
+        ValueError if the images do not share same
+        modes or heights
+    &#34;&#34;&#34;
+    assert img1.height == img2.height
+    assert img1.mode == img2.mode
+
+    img_mode = img1.mode
+    dst = Image.new(img_mode, (img1.width + img2.width, img1.height))
+    dst.paste(img1, (0, 0))
+    dst.paste(img2, (img1.width, 0))
+
+    return dst
+
+def concat_v(img1: Image, img2: Image) -&gt; Image:
+    &#34;&#34;&#34;Concatenate two PIL images vertically.
+
+    Args:
+        img1: the first image
+        img2: the second image
+
+    Returns:
+        dst: the concatenated image
+
+    Raises:
+        ValueError if the images do not share same
+        modes or widths
+    &#34;&#34;&#34;
+    assert img1.width == img2.width
+    assert img1.mode == img2.mode
+
+    img_mode = img1.mode
+    dst = Image.new(img_mode, (img1.width, img1.height + img2.height))
+    dst.paste(img1, (0, 0))
+    dst.paste(img2, (0, img1.height))
+
+    return dst
+    </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.utils.class_to_prob"><code class="name flex">
+<span>def <span class="ident">class_to_prob</span></span>(<span>class_vector: torch.LongTensor, nb_classes: int, device: torch.device) ‑> torch.FloatTensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert a vector containing classes to a one-hot vector.</p>
+<p>Convert a vector containing unique value for a class attribute to
+a one-hot vector containing probability, zero everywhere except at the
+class index.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>class_vector</code></strong></dt>
+<dd>a tensor of dimension (N, 1) where N is the batch
+size and the value is the class</dd>
+<dt><strong><code>nb_classes</code></strong></dt>
+<dd>the number of classes in the input images, excepting the
+FAKE class</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to use everywhere</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>prob_vector</code></dt>
+<dd>a vector of probabilities where 1 is set to the former
+class attribute of each vector</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<p>ValueError if the dimension of the input tensor is larger than 2</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def class_to_prob(class_vector: torch.LongTensor, nb_classes: int,
+                  device: torch.device) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Convert a vector containing classes to a one-hot vector.
+
+    Convert a vector containing unique value for a class attribute to
+    a one-hot vector containing probability, zero everywhere except at the
+    class index.
+
+    Args:
+        class_vector: a tensor of dimension (N, 1) where N is the batch
+            size and the value is the class
+        nb_classes: the number of classes in the input images, excepting the
+            FAKE class
+        device: the device to use everywhere
+
+    Returns:
+        prob_vector: a vector of probabilities where 1 is set to the former
+            class attribute of each vector
+
+    Raises:
+        ValueError if the dimension of the input tensor is larger than 2
+    &#34;&#34;&#34;
+    if len(class_vector.size()) &gt; 2:
+        raise ValueError(&#34;The vector of classes must be of dimension less than 3!&#34;)
+
+    batch_size = class_vector.size(0)
+
+    prob_vector = torch.zeros((batch_size, nb_classes+1), device=device)
+    for i in range(batch_size):
+        if len(class_vector.size()) == 1:
+            prob_vector[i][class_vector[i].long()] = 1
+        else:
+            prob_vector[i][class_vector[i][0].long()] = 1
+
+    return prob_vector</code></pre>
+</details>
+</dd>
+<dt id="src.utils.concat_h"><code class="name flex">
+<span>def <span class="ident">concat_h</span></span>(<span>img1: <module 'PIL.Image' from '/usr/lib/python3.9/site-packages/PIL/Image.py'>, img2: <module 'PIL.Image' from '/usr/lib/python3.9/site-packages/PIL/Image.py'>) ‑> <module 'PIL.Image' from '/usr/lib/python3.9/site-packages/PIL/Image.py'></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Concatenate two PIL images horizontally.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>img1</code></strong></dt>
+<dd>the first image</dd>
+<dt><strong><code>img2</code></strong></dt>
+<dd>the second image</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dst</code></dt>
+<dd>the concatenated image</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<p>ValueError if the images do not share same
+modes or heights</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def concat_h(img1: Image, img2: Image) -&gt; Image:
+    &#34;&#34;&#34;Concatenate two PIL images horizontally.
+
+    Args:
+        img1: the first image
+        img2: the second image
+
+    Returns:
+        dst: the concatenated image
+
+    Raises:
+        ValueError if the images do not share same
+        modes or heights
+    &#34;&#34;&#34;
+    assert img1.height == img2.height
+    assert img1.mode == img2.mode
+
+    img_mode = img1.mode
+    dst = Image.new(img_mode, (img1.width + img2.width, img1.height))
+    dst.paste(img1, (0, 0))
+    dst.paste(img2, (img1.width, 0))
+
+    return dst</code></pre>
+</details>
+</dd>
+<dt id="src.utils.concat_v"><code class="name flex">
+<span>def <span class="ident">concat_v</span></span>(<span>img1: <module 'PIL.Image' from '/usr/lib/python3.9/site-packages/PIL/Image.py'>, img2: <module 'PIL.Image' from '/usr/lib/python3.9/site-packages/PIL/Image.py'>) ‑> <module 'PIL.Image' from '/usr/lib/python3.9/site-packages/PIL/Image.py'></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Concatenate two PIL images vertically.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>img1</code></strong></dt>
+<dd>the first image</dd>
+<dt><strong><code>img2</code></strong></dt>
+<dd>the second image</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dst</code></dt>
+<dd>the concatenated image</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<p>ValueError if the images do not share same
+modes or widths</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def concat_v(img1: Image, img2: Image) -&gt; Image:
+    &#34;&#34;&#34;Concatenate two PIL images vertically.
+
+    Args:
+        img1: the first image
+        img2: the second image
+
+    Returns:
+        dst: the concatenated image
+
+    Raises:
+        ValueError if the images do not share same
+        modes or widths
+    &#34;&#34;&#34;
+    assert img1.width == img2.width
+    assert img1.mode == img2.mode
+
+    img_mode = img1.mode
+    dst = Image.new(img_mode, (img1.width, img1.height + img2.height))
+    dst.paste(img1, (0, 0))
+    dst.paste(img2, (0, img1.height))
+
+    return dst</code></pre>
+</details>
+</dd>
+<dt id="src.utils.decrease_lr"><code class="name flex">
+<span>def <span class="ident">decrease_lr</span></span>(<span>optimizer: <module 'torch.optim' from '/home/sebastien/.local/lib/python3.9/site-packages/torch/optim/__init__.py'>, current_epoch: int, lr_decay_epoch: int = 80, lr_decay_rate: float = 10) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Help managing the learning rate of RMSProp optimizers.</p>
+<p>The learning rate of the given optimizer is modified after each
+step of epochs to enhance learning.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>optimizer</code></strong></dt>
+<dd>the optimizer from PyTorch</dd>
+<dt><strong><code>current_epoch</code></strong></dt>
+<dd>the current epoch of the training process</dd>
+<dt><strong><code>lr_decay_epoch</code></strong></dt>
+<dd>step of the decreasing</dd>
+<dt><strong><code>lr_decay_rate</code></strong></dt>
+<dd>the rate to divide the learning rate with,
+after each step of epochs</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>new_lr</code></dt>
+<dd>the new learning rate for the optimizer</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decrease_lr(optimizer: torch.optim, current_epoch: int, lr_decay_epoch: int = 80,
+                lr_decay_rate: float = 10) -&gt; float:
+    &#34;&#34;&#34;Help managing the learning rate of RMSProp optimizers.
+
+    The learning rate of the given optimizer is modified after each
+    step of epochs to enhance learning.
+
+    Args:
+        optimizer: the optimizer from PyTorch
+        current_epoch: the current epoch of the training process
+        lr_decay_epoch: step of the decreasing
+        lr_decay_rate: the rate to divide the learning rate with,
+            after each step of epochs
+
+    Returns:
+        new_lr: the new learning rate for the optimizer
+    &#34;&#34;&#34;
+    new_lr = None
+    if current_epoch &gt; 0 and (current_epoch%lr_decay_epoch) == 0:
+
+        for param_group in optimizer.param_groups:
+            param_group[&#34;lr&#34;] /= lr_decay_rate
+            new_lr = param_group[&#34;lr&#34;]
+
+    return new_lr</code></pre>
+</details>
+</dd>
+<dt id="src.utils.fake_class"><code class="name flex">
+<span>def <span class="ident">fake_class</span></span>(<span>batch_size: int, nb_classes: int, device: torch.device) ‑> torch.LongTensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create the vector encoding FAKE attribute.</p>
+<p>Creates a vector of given length where the class for
+every image is the FAKE attribute.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>batch_size</code></strong></dt>
+<dd>the number of images in the fake data</dd>
+<dt><strong><code>nb_classes</code></strong></dt>
+<dd>the number of classes in the real data,
+excluding FAKE class</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to put everywhere</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>fake_vector</code></dt>
+<dd>a tensor of size (N) where N is the batch
+size and each value is the number of classes, ie the
+FAKE class</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fake_class(batch_size: int, nb_classes: int, device: torch.device) -&gt; torch.LongTensor:
+    &#34;&#34;&#34;Create the vector encoding FAKE attribute.
+
+    Creates a vector of given length where the class for
+    every image is the FAKE attribute.
+
+    Args:
+        batch_size: the number of images in the fake data
+        nb_classes: the number of classes in the real data,
+            excluding FAKE class
+        device: the device to put everywhere
+
+    Returns:
+        fake_vector: a tensor of size (N) where N is the batch
+            size and each value is the number of classes, ie the
+            FAKE class
+    &#34;&#34;&#34;
+    fake_vector = torch.full((batch_size,), nb_classes, device=device)
+    fake_vector = fake_vector.float()
+
+    return fake_vector</code></pre>
+</details>
+</dd>
+<dt id="src.utils.fake_noise"><code class="name flex">
+<span>def <span class="ident">fake_noise</span></span>(<span>batch_size: int, start_channels: int, nb_classes: int, device: torch.device) ‑> Tuple[torch.FloatTensor]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate sample noise for the Generator.</p>
+<p>Generate a sample of data from a noise distribution (a
+Gaussian distribution) and a choice of class for the fake
+image construction for the Generator.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>batch_size</code></strong></dt>
+<dd>the number of images per batch</dd>
+<dt><strong><code>start_channels</code></strong></dt>
+<dd>the number of channels for the
+first deconvolutional layer of the Generator, e.g.
+100</dd>
+<dt><strong><code>nb_classes</code></strong></dt>
+<dd>the number of classes of the dataset,
+excluding the FAKE class, e.g. 10 for CIFAR-10</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to be used to put the
+data on</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Z_hat</code></dt>
+<dd>a tensor of size (N, C) where N is
+the batch_size and C the start_channels</dd>
+<dt><code>Yk_hat</code></dt>
+<dd>a tensor of size (N, C) where N is
+the batch_size and C the nb_classes, where a random
+class is set to 1</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fake_noise(batch_size: int, start_channels: int, nb_classes: int,
+               device: torch.device) -&gt; Tuple[torch.FloatTensor]:
+    &#34;&#34;&#34;Generate sample noise for the Generator.
+
+    Generate a sample of data from a noise distribution (a
+    Gaussian distribution) and a choice of class for the fake
+    image construction for the Generator.
+
+    Args:
+        batch_size: the number of images per batch
+        start_channels: the number of channels for the
+            first deconvolutional layer of the Generator, e.g.
+            100
+        nb_classes: the number of classes of the dataset,
+            excluding the FAKE class, e.g. 10 for CIFAR-10
+        device: the device to be used to put the
+            data on
+
+    Returns:
+        Z_hat: a tensor of size (N, C) where N is
+            the batch_size and C the start_channels
+        Yk_hat: a tensor of size (N, C) where N is
+            the batch_size and C the nb_classes, where a random
+            class is set to 1
+    &#34;&#34;&#34;
+    Z_hat = torch.randn(batch_size, start_channels-nb_classes, device=device)
+
+    Yk_hat = torch.zeros(batch_size, nb_classes, device=device)
+    for j in range(batch_size):
+        random_class = random.randint(0, nb_classes-1)
+        Yk_hat[j][random_class] = 1
+
+    return Z_hat, Yk_hat</code></pre>
+</details>
+</dd>
+<dt id="src.utils.fake_noise_all_classes"><code class="name flex">
+<span>def <span class="ident">fake_noise_all_classes</span></span>(<span>start_channels: int, nb_classes: int, device: torch.device) ‑> torch.FloatTensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate an input vector for the Generator with all classes.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_channels</code></strong></dt>
+<dd>the number of channels in the input data for
+the generator</dd>
+<dt><strong><code>nb_classes</code></strong></dt>
+<dd>the number of classes in the input images</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to use everywhere</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Z_hat</code></dt>
+<dd>a tensor of noise</dd>
+<dt><code>Yk_hat</code></dt>
+<dd>the corresponding labels</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fake_noise_all_classes(start_channels: int, nb_classes: int,
+                           device: torch.device) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Generate an input vector for the Generator with all classes.
+
+    Args:
+        start_channels: the number of channels in the input data for
+            the generator
+        nb_classes: the number of classes in the input images
+        device: the device to use everywhere
+
+    Returns:
+        Z_hat: a tensor of noise
+        Yk_hat: the corresponding labels
+    &#34;&#34;&#34;
+    Z_hat = torch.randn(nb_classes, start_channels-nb_classes, device=device)
+
+    Yk_hat = torch.zeros(nb_classes, nb_classes, device=device)
+    for i in range(nb_classes):
+        Yk_hat[i][i] = 1
+
+    return Z_hat, Yk_hat</code></pre>
+</details>
+</dd>
+<dt id="src.utils.fake_noise_one_class"><code class="name flex">
+<span>def <span class="ident">fake_noise_one_class</span></span>(<span>start_channels: int, nb_classes: int, chosen_class: int, device: torch.device) ‑> torch.FloatTensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate an input vector for the Generator with specified class.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_channels</code></strong></dt>
+<dd>the number of channels in the input data for
+the generator</dd>
+<dt><strong><code>nb_classes</code></strong></dt>
+<dd>the number of classes in the input images</dd>
+<dt><strong><code>chosen_class</code></strong></dt>
+<dd>the index of the chosen class</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to use everywhere</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Z_Yk_fixed</code></dt>
+<dd>a tensor of noise and the chosen class index</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<p>ValueError if the chosen class is greater than the number of
+classes</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fake_noise_one_class(start_channels: int, nb_classes: int, chosen_class: int,
+                         device: torch.device) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Generate an input vector for the Generator with specified class.
+
+    Args:
+        start_channels: the number of channels in the input data for
+            the generator
+        nb_classes: the number of classes in the input images
+        chosen_class: the index of the chosen class
+        device: the device to use everywhere
+
+    Returns:
+        Z_Yk_fixed: a tensor of noise and the chosen class index
+
+    Raises:
+        ValueError if the chosen class is greater than the number of
+            classes
+    &#34;&#34;&#34;
+    if chosen_class &gt;= nb_classes:
+        raise ValueError(&#34;The chosen class is greater than the number of classes!&#34;)
+
+    Z_hat = torch.randn(1, start_channels-nb_classes, device=device)
+
+    Yk_hat = torch.zeros(1, nb_classes, device=device)
+    Yk_hat[0][chosen_class] = 1
+
+    Z_Yk_hat = torch.cat([Z_hat, Yk_hat], dim=1)
+
+    return Z_Yk_hat</code></pre>
+</details>
+</dd>
+<dt id="src.utils.gen_noise"><code class="name flex">
+<span>def <span class="ident">gen_noise</span></span>(<span>batch_size: int, input_channels: int, img_size: int, epoch: int, device: torch.device) ‑> torch.FloatTensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate gaussian noise to be added to input data.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>batch_size</code></strong></dt>
+<dd>the size of batches</dd>
+<dt><strong><code>input_channels</code></strong></dt>
+<dd>the number of channels in the input images
+e.g. 3 for RGB</dd>
+<dt><strong><code>img_size</code></strong></dt>
+<dd>the size of the input images, expected to be
+squared images</dd>
+<dt><strong><code>epoch</code></strong></dt>
+<dd>the epoch of training</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to use everywhere</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>noise</code></dt>
+<dd>a tensor of normal noise to add to images</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def gen_noise(batch_size: int, input_channels: int, img_size: int,
+              epoch: int, device: torch.device) -&gt; torch.FloatTensor:
+    &#34;&#34;&#34;Generate gaussian noise to be added to input data.
+
+    Args:
+        batch_size: the size of batches
+        input_channels: the number of channels in the input images
+            e.g. 3 for RGB
+        img_size: the size of the input images, expected to be
+            squared images
+        epoch: the epoch of training
+        device: the device to use everywhere
+
+    Returns:
+        noise: a tensor of normal noise to add to images
+    &#34;&#34;&#34;
+    size = (batch_size, input_channels, img_size, img_size)
+    noise = torch.normal(0.0, 0.1/(epoch+1), size, device=device)
+
+    return noise</code></pre>
+</details>
+</dd>
+<dt id="src.utils.imshow"><code class="name flex">
+<span>def <span class="ident">imshow</span></span>(<span>img: numpy.ndarray, epoch: int, label: str) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot and save an image from Tensor.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>img</code></strong></dt>
+<dd>the image to plot as a tensor</dd>
+<dt><strong><code>epoch</code></strong></dt>
+<dd>the epoch to display in the title</dd>
+<dt><strong><code>label</code></strong></dt>
+<dd>the label/class to display in the title</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def imshow(img: np.ndarray, epoch: int, label: str) -&gt; None:
+    &#34;&#34;&#34;Plot and save an image from Tensor.
+
+    Args:
+        img: the image to plot as a tensor
+        epoch: the epoch to display in the title
+        label: the label/class to display in the title
+    &#34;&#34;&#34;
+    img = img / 2 + 0.5     # unnormalize
+    plt.imshow(np.transpose(img, (1, 2, 0)))
+    plt.title(&#34;Epoch {} and class {}&#34;.format(epoch, label))
+    plt.axis(&#34;off&#34;)
+    plt.tight_layout()
+    plt.savefig(&#34;results/images/gan_{}_class_{}&#34;.format(epoch, label))
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="src.utils.prob_to_class"><code class="name flex">
+<span>def <span class="ident">prob_to_class</span></span>(<span>prob_vector: torch.FloatTensor, device: torch.device) ‑> torch.LongTensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert one-hot vector to a vector of probabilities.</p>
+<p>Convert a vector containing probabilities per each class
+to a new vector having for each value the class with highest
+probability.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>prob_vector</code></strong></dt>
+<dd>a tensor of size (N, C) where N
+is the batch size and C is the number of classes</dd>
+<dt><strong><code>device</code></strong></dt>
+<dd>the device to put the data on</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>class_vector</code></dt>
+<dd>a tensor of size (N, 1) where
+N is the batch size and the value contained is the class
+with highest probability in prob_vector</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<p>ValueError if the dimension of the tensor is incorrect</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def prob_to_class(prob_vector: torch.FloatTensor, device: torch.device) -&gt; torch.LongTensor:
+    &#34;&#34;&#34;Convert one-hot vector to a vector of probabilities.
+
+    Convert a vector containing probabilities per each class
+    to a new vector having for each value the class with highest
+    probability.
+
+    Args:
+        prob_vector: a tensor of size (N, C) where N
+            is the batch size and C is the number of classes
+        device: the device to put the data on
+
+    Returns:
+        class_vector: a tensor of size (N, 1) where
+            N is the batch size and the value contained is the class
+            with highest probability in prob_vector
+
+    Raises:
+        ValueError if the dimension of the tensor is incorrect
+    &#34;&#34;&#34;
+    if len(prob_vector.size()) != 2:
+        raise ValueError(&#34;This function needs a 2-dimensional tensor!&#34;)
+
+    batch_size = prob_vector.size(0)
+    class_vector = torch.zeros(batch_size, dtype=torch.long, device=device)
+
+    for j in range(batch_size):
+        class_vector[j] = torch.argmax(prob_vector[j])
+
+    return class_vector</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.utils.class_to_prob" href="#src.utils.class_to_prob">class_to_prob</a></code></li>
+<li><code><a title="src.utils.concat_h" href="#src.utils.concat_h">concat_h</a></code></li>
+<li><code><a title="src.utils.concat_v" href="#src.utils.concat_v">concat_v</a></code></li>
+<li><code><a title="src.utils.decrease_lr" href="#src.utils.decrease_lr">decrease_lr</a></code></li>
+<li><code><a title="src.utils.fake_class" href="#src.utils.fake_class">fake_class</a></code></li>
+<li><code><a title="src.utils.fake_noise" href="#src.utils.fake_noise">fake_noise</a></code></li>
+<li><code><a title="src.utils.fake_noise_all_classes" href="#src.utils.fake_noise_all_classes">fake_noise_all_classes</a></code></li>
+<li><code><a title="src.utils.fake_noise_one_class" href="#src.utils.fake_noise_one_class">fake_noise_one_class</a></code></li>
+<li><code><a title="src.utils.gen_noise" href="#src.utils.gen_noise">gen_noise</a></code></li>
+<li><code><a title="src.utils.imshow" href="#src.utils.imshow">imshow</a></code></li>
+<li><code><a title="src.utils.prob_to_class" href="#src.utils.prob_to_class">prob_to_class</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
