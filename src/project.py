@@ -133,8 +133,8 @@ def save_loss(data_type:str, version: str) -> None:
     G_loss = loss_data["G_loss"]
     D_loss = loss_data["D_loss"]
 
-    plt.plot(T, G_loss, label="Generator loss")
-    plt.plot(T, D_loss, label="Discriminator loss")
+    plt.plot(T, G_loss, label="Loss (G)", color="blue")
+    plt.plot(T, D_loss, label="Loss (D)", color="red")
     plt.legend()
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
@@ -160,7 +160,7 @@ def save_score(data_type:str, version: str) -> None:
     T = score_data["Epoch"]
     D_score = score_data["Score"]
 
-    plt.plot(T, D_score, label="True Negatives")
+    plt.plot(T, D_score, label="Specificity", color="green")
     plt.legend()
     plt.xlabel("Epoch")
     plt.ylabel("Specificity (in %)")
@@ -198,27 +198,26 @@ def save_both(data_type:str, version: str) -> None:
     D_loss = loss_data["D_loss"]
 
     # Plotting both
-    fig, ax1 = plt.subplots()
+    fig, ax = plt.subplots(ncols=2, figsize=(12, 6))
 
-    ax1.set_xlabel("Epoch")
-    ax1.set_ylabel("Loss")
-    ax1.plot(T, G_loss, label="Generator loss", color="blue")
-    ax1.plot(T, D_loss, label="Discriminator loss", color="red")
-    ax1.tick_params(axis="y")
-    # ax1.legend(loc=0)
+    ax[0].set_xlabel("Epoch")
+    ax[0].set_ylabel("Loss")
+    ax[0].plot(T, G_loss, label="Loss (G)", color="blue")
+    ax[0].plot(T, D_loss, label="Loss (D)", color="red")
+    ax[0].tick_params(axis="y")
+    ax[0].legend()
 
-    ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
-
-    ax2.set_ylabel("Score")
-    ax2.plot(T, D_score, label="True Negatives", color="green")
-    ax2.tick_params(axis="y")
+    ax[1].set_xlabel("Epoch")
+    ax[1].set_ylabel("Specificity (in %)")
+    ax[1].plot(T, D_score, label="Specificity", color="green")
+    ax[1].tick_params(axis="y")
+    ax[1].legend()
 
     both_folder = "results/" + data_type + "_" + version + "/both/"
     if not os.path.exists(both_folder):
         os.makedirs(both_folder)
 
     path_to_file = both_folder + "loss_score.jpg"
-    # plt.legend()
     plt.tight_layout()
     plt.savefig(path_to_file)
     plt.close()
