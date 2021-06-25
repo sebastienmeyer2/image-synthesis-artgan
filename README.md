@@ -3,17 +3,22 @@
 In this project, we implement the convolutional networks described in 
 the paper from Tan, Chan, Aguirre & Tanaka [1]. However, we have made some 
 changes to the original networks by adding Dropout layers, Instance noise 
-and by tweaking the training parameters. Then, we have run the 
-Generative Adversial Networks on several datasets in order to create 
-artworks.
+and by tweaking the training parameters. Thus, ArtGAN lead us to interesting 
+results, from generating unique faces to imitating well-known artists.
 
-The project was made in collaboration with Maximilian Sabayev.
+Please refer to the following sections for more information:
+
+1. [Usage](#package-usage)
+2. [Documentation](#documentation)
+3. [Results](#our-results)
+
+This project was made in collaboration with Maximilian Sabayev.
 
 ## Package usage
 
 The networks are gathered in the *src/gan* folder. Also, there are three 
 main files used for training and evaluating ArtGANs, 
-and one utils file. 
+and one utils file.
 
 ### Preparing data
 
@@ -47,7 +52,7 @@ file to train an ArtGAN. Here are the command specifications:
 - `-d`: you can choose the duration of the training (in epochs)
 - `-r`: you can choose an epoch from which the program will continue training 
 - `-l`: use it with any number if you want to save the loss of both networks 
-- `-s`: use it with any number if you want to save the score of the Discriminator 
+- `-s`: use it with any number if you want to save the specificity of the Discriminator 
 
 At the end of the training, saved models and images are available in the 
 *results* folder. The program will also show up some 
@@ -104,7 +109,7 @@ and on the right, generated ones.
 
 ![alt text](figures/pol_comp.jpg)
 
-Here, we show the resulting evolution of the score 
+Here, we show the resulting evolution of the specificity 
 of the Discriminator (in green) and the loss of both the Generator (in blue) 
 and the Discriminator (in red): 
 
@@ -118,6 +123,11 @@ images using these labels.
 
 ![alt text](figures/artist_comp.jpg)
 
+Here, we show the specificity of the Discriminator (in green) and the loss of both 
+the Generator (in blue) and the Discriminator (in red): 
+
+![alt text](figures/artist_loss_score.jpg)
+
 Here, we show some nearest neighbors for Claude Monet label:
 
 ![alt text](figures/artist_nn.png)
@@ -130,6 +140,11 @@ these labels.
 
 ![alt text](figures/genre_comp.jpg)
 
+Here, we show the specificity of the Discriminator (in green) and the loss of both 
+the Generator (in blue) and the Discriminator (in red): 
+
+![alt text](figures/genre_loss_score.jpg)
+
 Here, we show some nearest neighbors for Portrait label:
 
 ![alt text](figures/genre_nn.png)
@@ -140,6 +155,11 @@ On the left from up to down, the images correspond to Frog, Horse and Boat label
 On the right, some generated images using these labels.
 
 ![alt text](figures/cifar_comp.jpg) 
+
+Here, we show the specificity of the Discriminator (in green) and the loss of both 
+the Generator (in blue) and the Discriminator (in red): 
+
+![alt text](figures/cifar_loss_score.jpg)
 
 Here, we show some nearest neighbors for Boat label: 
 
